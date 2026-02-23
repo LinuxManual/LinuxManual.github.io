@@ -3,41 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinuxElite | The Best Linux Distros of 2026</title>
+    <title>LinuxElite X | Ultimate Linux Platform 2026</title>
+
     <style>
-        /* CSS Variables for consistent theming */
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #18bc9c;
-            --dark-bg: #1a1a1a;
-            --light-bg: #f8f9fa;
-            --text-color: #333;
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --primary: #0b1220;
+            --accent: #00ffc6;
+            --accent2: #7c3aed;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --card-hover-shadow: 0 10px 30px rgba(124, 58, 237, 0.15);
         }
 
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        [data-theme="dark"] {
+            --bg: #030712;
+            --card: #111827;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --border: #1f2937;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --card-hover-shadow: 0 10px 30px rgba(0, 255, 198, 0.2);
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: var(--font-family);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-bg);
+            transition: background 0.3s, color 0.3s;
+            scroll-behavior: smooth;
         }
 
-        a {
-            text-decoration: none;
-            color: var(--secondary-color);
-        }
+        a { text-decoration: none; color: var(--accent); }
 
-        /* Header Navigation */
+        /* Glassmorphism Header */
         header {
-            background-color: var(--primary-color);
-            color: #fff;
+            background: rgba(11, 18, 32, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
@@ -45,301 +54,396 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        header .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
+        .logo { font-size: 1.8rem; font-weight: 800; color: var(--accent); letter-spacing: -1px; }
+        
+        nav ul { display: flex; gap: 25px; list-style: none; align-items: center; }
+        nav a { color: #f1f5f9; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: var(--accent); }
 
-        header nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
+        .toggle {
+            background: var(--accent);
+            color: #000;
+            padding: 6px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: none;
         }
+        .toggle:hover { background: #00e0ae; transform: translateY(-2px); }
 
-        header nav ul li a {
-            color: #fff;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        header nav ul li a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Hero Section */
+        /* Hero with gradient text */
         .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(24, 188, 156, 0.8)), url('https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=1920&q=80') center/cover;
-            color: #fff;
+            padding: 160px 20px;
             text-align: center;
-            padding: 100px 20px;
+            background: linear-gradient(135deg, var(--primary) 20%, var(--accent2) 100%);
+            color: white;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: 40px;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; }
+        .hero p { max-width: 800px; margin: auto; margin-bottom: 40px; font-size: 1.2rem; opacity: 0.9; }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
+        .btn {
+            background: var(--accent);
+            padding: 14px 32px;
+            border-radius: 8px;
+            color: #000;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 255, 198, 0.3);
         }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 255, 198, 0.5); }
 
-        .hero .btn {
-            background-color: var(--secondary-color);
-            color: #fff;
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
+        .section { padding: 80px 5%; }
+        .section h2 { font-size: 2.5rem; margin-bottom: 40px; text-align: center; background: linear-gradient(90deg, var(--accent2), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        .hero .btn:hover {
-            background-color: #128f76;
-        }
-
-        /* Distros Grid Section */
-        .distros-section {
-            padding: 80px 5%;
-            text-align: center;
-        }
-
-        .distros-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: var(--primary-color);
-        }
-
+        /* Modern Grid & Cards */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
         .card {
-            background: #fff;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: left;
+            background: var(--card);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
         }
+        .card:hover { transform: translateY(-8px); box-shadow: var(--card-hover-shadow); border-color: var(--accent); }
+        .card h3 { color: var(--text); margin-bottom: 10px; font-size: 1.4rem; }
+        .card p { color: var(--muted); }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        /* Table */
+        .table { width: 100%; border-collapse: collapse; margin-top: 50px; background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+        .table th, .table td { padding: 18px; text-align: left; border-bottom: 1px solid var(--border); }
+        .table th { background: var(--primary); color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; }
+        .table tr:last-child td { border-bottom: none; }
+        .table tr:hover td { background: rgba(0, 255, 198, 0.05); }
+
+        /* Enhanced Search */
+        .search-box { max-width: 600px; margin: 0 auto 50px auto; position: relative; }
+        .search-box input {
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            font-size: 1.1rem;
+            outline: none;
+            transition: border-color 0.3s;
         }
+        .search-box input:focus { border-color: var(--accent); }
 
-        .card h3 {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            border-bottom: 2px solid var(--secondary-color);
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        .card .version {
-            font-weight: bold;
-            color: #555;
-            margin-bottom: 15px;
+        .command-group { margin-bottom: 30px; }
+        .command-group h3 { margin-bottom: 15px; color: var(--accent2); border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+        
+        code {
             display: block;
+            background: #030712;
+            color: #00ffc6;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            border-left: 4px solid var(--accent2);
+            transition: all 0.2s;
         }
+        code:hover { background: #111827; border-left-color: var(--accent); }
 
-        /* Pricing Section */
-        .pricing-section {
-            background-color: var(--dark-bg);
-            color: #fff;
-            padding: 80px 5%;
-            text-align: center;
-        }
+        /* Pricing Area */
+        .pricing { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
+        .plan { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 40px; text-align: center; width: 320px; transition: 0.3s; position: relative; }
+        .plan:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
+        .plan h3 { font-size: 1.8rem; margin-bottom: 10px; }
+        .plan .price { font-size: 3rem; font-weight: 800; color: var(--text); margin-bottom: 20px; }
+        .plan .price span { font-size: 1rem; color: var(--muted); font-weight: 400; }
+        .plan ul { list-style: none; margin-bottom: 30px; color: var(--muted); text-align: left; }
+        .plan ul li { padding: 10px 0; border-bottom: 1px solid var(--border); }
+        .plan ul li::before { content: "✓ "; color: var(--accent); font-weight: bold; }
+        
+        .plan.ultra { border: 2px solid var(--accent2); background: linear-gradient(180deg, var(--card) 0%, rgba(124, 58, 237, 0.05) 100%); }
+        .plan.ultra .badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent2); color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        
+        .plan .btn { width: 100%; }
 
-        .pricing-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--secondary-color);
-        }
-
-        .pricing-section p {
-            margin-bottom: 50px;
-        }
-
-        .pricing-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .pricing-card {
-            background: #fff;
-            color: var(--text-color);
-            border-radius: 10px;
-            padding: 40px 30px;
-            width: 300px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-
-        .pricing-card.ultra {
-            border: 3px solid var(--secondary-color);
-            transform: scale(1.05);
-        }
-
-        .pricing-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .pricing-card .price {
-            font-size: 2.5rem;
+        /* Tools & Utilities */
+        .sidebar {
+            position: fixed;
+            right: 0;
+            bottom: 40px;
+            background: var(--accent);
+            color: #000;
+            padding: 10px 15px;
+            border-radius: 8px 0 0 8px;
+            cursor: pointer;
             font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 20px;
+            box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
         }
+        .sidebar:hover { right: 5px; }
 
-        .pricing-card ul {
-            list-style: none;
-            margin-bottom: 30px;
-        }
+        .footer { background: var(--primary); color: #94a3b8; padding: 80px 5% 40px; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; }
+        .footer h4 { color: #f1f5f9; margin-bottom: 15px; font-size: 1.2rem; }
+        .footer p { margin-bottom: 8px; transition: color 0.2s; cursor: pointer; }
+        .footer p:hover { color: var(--accent); }
 
-        .pricing-card ul li {
-            margin-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-
-        .pricing-card .btn {
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            display: inline-block;
-            transition: background 0.3s;
-        }
-
-        .pricing-card.ultra .btn {
-            background-color: var(--secondary-color);
-        }
-
-        .pricing-card .btn:hover {
-            opacity: 0.9;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: #ccc;
-            text-align: center;
-            padding: 20px;
-            margin-top: auto;
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .pricing-card.ultra {
-                transform: scale(1);
-            }
+            header { flex-direction: column; padding: 1rem; }
+            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero { clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); }
         }
     </style>
 </head>
+
 <body>
 
-    <header>
-        <div class="logo">LinuxElite</div>
-        <nav>
+<header>
+    <div class="logo">LinuxElite X</div>
+    <nav>
+        <ul>
+            <li><a href="#distros">Intelligence</a></li>
+            <li><a href="#manual">Manual</a></li>
+            <li><a href="#enterprise">Enterprise</a></li>
+            <li><a href="#pricing">Access</a></li>
+            <li><button class="toggle" onclick="toggleTheme()">Theme</button></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>LinuxElite X 2026</h1>
+    <p>The definitive Linux ecosystem platform. Master distro intelligence, deploy enterprise blueprints, and harden security with real sysadmin knowledge.</p>
+    <a href="#manual" class="btn">Enter Platform</a>
+</section>
+
+<section id="distros" class="section">
+    <h2>Distro Intelligence Matrix</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Linux Mint 22.3</h3>
+            <p>Best transition distro. Cinnamon 6.6 stability + Ubuntu 24.04 LTS core.</p>
+        </div>
+        <div class="card">
+            <h3>Ubuntu 25.10 / LTS</h3>
+            <p>Enterprise and developer ecosystem leader with the new apt 3.1 manager.</p>
+        </div>
+        <div class="card">
+            <h3>Fedora 43</h3>
+            <p>Innovation pipeline powered by Red Hat. Pure Wayland & GNOME 49.</p>
+        </div>
+        <div class="card">
+            <h3>Debian 13 "Trixie"</h3>
+            <p>The "Universal OS". Rock-solid foundation of the Linux world.</p>
+        </div>
+        <div class="card">
+            <h3>Arch Linux</h3>
+            <p>Rolling release control, minimal base, and legendary AUR power.</p>
+        </div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>Distribution</th>
+            <th>Primary Use Case</th>
+            <th>Release Model</th>
+            <th>Stability Index</th>
+        </tr>
+        <tr>
+            <td>Ubuntu 24.04 LTS</td>
+            <td>Enterprise Servers</td>
+            <td>LTS (5+ Years)</td>
+            <td>Very High</td>
+        </tr>
+        <tr>
+            <td>Fedora Workstation</td>
+            <td>Software Developers</td>
+            <td>6 Months</td>
+            <td>High</td>
+        </tr>
+        <tr>
+            <td>Arch Linux</td>
+            <td>Advanced Users / Control</td>
+            <td>Rolling Release</td>
+            <td>Variable (User-Dependent)</td>
+        </tr>
+    </table>
+</section>
+
+<section id="manual" class="section">
+    <h2>Linux Core Command Database</h2>
+    <div class="search-box">
+        <input type="text" id="search" placeholder="Search commands, flags or descriptions..." onkeyup="filterCommands()">
+    </div>
+    
+    <div id="commands">
+        <div class="command-group">
+            <h3>Filesystem</h3>
+            <code>ls -la</code>
+            <code>chmod 755 file</code>
+            <code>chown user:group file</code>
+        </div>
+        <div class="command-group">
+            <h3>Packages (2026 Spec)</h3>
+            <code>apt update && apt upgrade -y</code>
+            <code>dnf upgrade --refresh</code>
+            <code>pacman -Syu</code>
+        </div>
+        <div class="command-group">
+            <h3>Processes & Monitoring</h3>
+            <code>top</code>
+            <code>htop</code>
+            <code>kill -9 PID</code>
+            <code>journalctl -xeu service_name</code>
+        </div>
+        <div class="command-group">
+            <h3>Networking</h3>
+            <code>ip a</code>
+            <code>ss -tulnp</code>
+            <code>tcpdump -i eth0</code>
+        </div>
+    </div>
+</section>
+
+<section id="enterprise" class="section">
+    <h2>Enterprise Deployment Blueprint</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>NGINX Reverse Proxy</h3>
+            <code>sudo apt install nginx</code>
+            <p style="margin-top:10px; font-size:0.9rem; color:var(--muted);">Configure as a load balancer for backend microservices.</p>
+        </div>
+        <div class="card">
+            <h3>Docker Engine</h3>
+            <code>sudo apt install docker.io</code>
+            <p style="margin-top:10px; font-size:0.9rem; color:var(--muted);">Containerize isolated workloads efficiently.</p>
+        </div>
+        <div class="card">
+            <h3>Kubernetes</h3>
+            <code>kubectl get nodes</code>
+            <p style="margin-top:10px; font-size:0.9rem; color:var(--muted);">Orchestrate container deployments automatically.</p>
+        </div>
+        <div class="card">
+            <h3>Database Hardening</h3>
+            <code>mysql_secure_installation</code>
+            <p style="margin-top:10px; font-size:0.9rem; color:var(--muted);">Remove test databases and secure root access.</p>
+        </div>
+    </div>
+</section>
+
+<section id="security" class="section">
+    <h2>Security Hardening Framework</h2>
+    <div style="max-width: 800px; margin: auto;">
+        <code>ufw enable && ufw default deny incoming</code>
+        <code>systemctl enable fail2ban --now</code>
+        <code>sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config</code>
+        <code>auditctl -l</code>
+    </div>
+</section>
+
+<section id="pricing" class="section">
+    <h2>Platform Access Plans</h2>
+    <div class="pricing">
+        <div class="plan">
+            <h3>Pro</h3>
+            <div class="price">€15<span>/mo</span></div>
             <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#distros">Top Distros 2026</a></li>
-                <li><a href="#pricing">Premium Support</a></li>
+                <li>Full Manual & Database Access</li>
+                <li>Basic Deployment Blueprints</li>
+                <li>Community Forum Support</li>
+                <li>Monthly Intelligence Report</li>
             </ul>
-        </nav>
-    </header>
-
-    <section id="hero" class="hero">
-        <h1>Discover the Best Linux Distros of 2026</h1>
-        <p>Whether you're a seasoned developer, a Windows refugee, or a privacy enthusiast, we curate the definitive list of the most stable and cutting-edge Linux operating systems available today.</p>
-        <a href="#distros" class="btn">Explore the List</a>
-    </section>
-
-    <section id="distros" class="distros-section">
-        <h2>Top Recommended Distributions</h2>
-        <div class="grid">
-            
-            <div class="card">
-                <h3>Linux Mint</h3>
-                <span class="version">Latest Version: 22.3 "Zena" (Released Jan 2026)</span>
-                <p>The undisputed champion for newcomers transitioning from Windows. Version 22.3 brings the redesigned Cinnamon 6.6 desktop, a native on-screen keyboard, and incredible out-of-the-box driver support. Based on the rock-solid Ubuntu 24.04 LTS foundation with support until 2029.</p>
-            </div>
-
-            <div class="card">
-                <h3>Ubuntu</h3>
-                <span class="version">Latest Versions: 25.10 "Questing Quokka" / 24.04 LTS</span>
-                <p>The industry standard for software developers and enterprise workstations. Choose the stable 24.04 LTS for long-term reliability, or jump on the brand new 25.10 interim release for the absolute latest GNOME capabilities, apt 3.1 package manager, and advanced security features.</p>
-            </div>
-
-            <div class="card">
-                <h3>Fedora Workstation</h3>
-                <span class="version">Latest Version: Fedora 43 (Released Late 2025)</span>
-                <p>Sponsored by Red Hat, Fedora is the leading-edge innovator. Fedora 43 introduces RPM 6.0, GNOME 49, and operates as a fully Wayland-only environment. It perfectly balances new upstream technologies with dependable performance for power users.</p>
-            </div>
-
-            <div class="card">
-                <h3>Debian</h3>
-                <span class="version">Latest Version: Debian 13 "Trixie"</span>
-                <p>Known as the "Universal Operating System," Debian 13 is the foundation upon which countless other distros are built. Featuring non-free firmware baked right into the official installer and PipeWire as the default audio server, it offers bulletproof stability for servers and daily drivers alike.</p>
-            </div>
-
-            <div class="card">
-                <h3>Arch Linux</h3>
-                <span class="version">Version: Rolling Release (Always updated in 2026)</span>
-                <p>For those who want complete control over their system. Arch provides a minimal base that you build upon yourself. With its rolling release model and the legendary Arch User Repository (AUR), you will always have access to the absolute newest software the minute it is released.</p>
-            </div>
-
+            <a href="#" class="btn">Select Pro</a>
         </div>
-    </section>
-
-    <section id="pricing" class="pricing-section">
-        <h2>Our Premium Application Plans</h2>
-        <p>Unlock advanced features, personalized Linux setup assistance, and 24/7 priority support.</p>
         
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>Pro Plan</h3>
-                <div class="price">€15<span style="font-size: 1rem; color: #555;">/mo</span></div>
-                <ul>
-                    <li>Basic Application Access</li>
-                    <li>Email Tech Support</li>
-                    <li>Distro Installation Guides</li>
-                    <li>Monthly Newsletter</li>
-                </ul>
-                <a href="#" class="btn">Get Pro</a>
-            </div>
-
-            <div class="pricing-card ultra">
-                <h3>Ultra Plan</h3>
-                <div class="price">€25<span style="font-size: 1rem; color: #555;">/mo</span></div>
-                <ul>
-                    <li>Full Application Access</li>
-                    <li>24/7 Priority Support</li>
-                    <li>Live 1-on-1 Remote Setup</li>
-                    <li>Custom Hardware Diagnostics</li>
-                </ul>
-                <a href="#" class="btn">Get Ultra</a>
-            </div>
+        <div class="plan ultra">
+            <div class="badge">RECOMMENDED</div>
+            <h3>Ultra</h3>
+            <div class="price">€25<span>/mo</span></div>
+            <ul>
+                <li>Everything in Pro</li>
+                <li>Advanced Enterprise Blueprints</li>
+                <li>1-on-1 Sysadmin Consultation</li>
+                <li>Priority 24/7 Remote Support</li>
+            </ul>
+            <a href="#" class="btn" style="background: var(--accent2); color: #fff;">Select Ultra</a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer>
-        <p>&copy; 2026 LinuxElite. Built for the open-source community.</p>
-    </footer>
+<div class="sidebar" onclick="scrollToTop()">↑ Top</div>
+
+<footer class="footer">
+    <div class="footer-grid">
+        <div>
+            <h4>LinuxElite X</h4>
+            <p>Advanced Sysadmin Intelligence</p>
+            <p style="margin-top: 15px; color: var(--accent);">Built for 2026</p>
+        </div>
+        <div>
+            <h4>Platform</h4>
+            <p>Distro Matrix</p>
+            <p>Command Manual</p>
+            <p>Enterprise</p>
+            <p>Pricing Plans</p>
+        </div>
+        <div>
+            <h4>Built For</h4>
+            <p>DevOps Engineers</p>
+            <p>Sysadmins</p>
+            <p>Linux Enthusiasts</p>
+        </div>
+    </div>
+    <p style="margin-top:40px; text-align:center; font-size: 0.9rem;">© 2026 LinuxElite X - All Systems Operational.</p>
+</footer>
+
+<script>
+    // Set default theme to dark for a better 'hacker/sysadmin' vibe, but respect the toggle
+    document.body.dataset.theme = "dark";
+
+    function toggleTheme() {
+        document.body.dataset.theme = 
+        document.body.dataset.theme === "dark" ? "" : "dark";
+    }
+
+    // Improved search: Hides the <h3> header if no commands match under it
+    function filterCommands() {
+        let input = document.getElementById("search").value.toLowerCase();
+        let groups = document.querySelectorAll(".command-group");
+        
+        groups.forEach(group => {
+            let codes = group.querySelectorAll("code");
+            let hasVisible = false;
+            
+            codes.forEach(code => {
+                if(code.innerText.toLowerCase().includes(input)) {
+                    code.style.display = "block";
+                    hasVisible = true;
+                } else {
+                    code.style.display = "none";
+                }
+            });
+            
+            // Hide the entire group (including title) if no matches found
+            group.style.display = hasVisible ? "block" : "none";
+        });
+    }
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
 
 </body>
 </html>
