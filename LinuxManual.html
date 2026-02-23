@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinuxElite | The Best Linux Distros of 2026</title>
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #18bc9c;
+            --dark-bg: #1a1a1a;
+            --light-bg: #f8f9fa;
+            --text-color: #333;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(24, 188, 156, 0.8)), url('https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .hero .btn {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .hero .btn:hover {
+            background-color: #128f76;
+        }
+
+        /* Distros Grid Section */
+        .distros-section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .distros-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: left;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .card .version {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background-color: var(--dark-bg);
+            color: #fff;
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .pricing-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .pricing-section p {
+            margin-bottom: 50px;
+        }
+
+        .pricing-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .pricing-card {
+            background: #fff;
+            color: var(--text-color);
+            border-radius: 10px;
+            padding: 40px 30px;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .pricing-card.ultra {
+            border: 3px solid var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-card ul li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .pricing-card .btn {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .pricing-card.ultra .btn {
+            background-color: var(--secondary-color);
+        }
+
+        .pricing-card .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #ccc;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .pricing-card.ultra {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">LinuxElite</div>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#distros">Top Distros 2026</a></li>
+                <li><a href="#pricing">Premium Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <h1>Discover the Best Linux Distros of 2026</h1>
+        <p>Whether you're a seasoned developer, a Windows refugee, or a privacy enthusiast, we curate the definitive list of the most stable and cutting-edge Linux operating systems available today.</p>
+        <a href="#distros" class="btn">Explore the List</a>
+    </section>
+
+    <section id="distros" class="distros-section">
+        <h2>Top Recommended Distributions</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <h3>Linux Mint</h3>
+                <span class="version">Latest Version: 22.3 "Zena" (Released Jan 2026)</span>
+                <p>The undisputed champion for newcomers transitioning from Windows. Version 22.3 brings the redesigned Cinnamon 6.6 desktop, a native on-screen keyboard, and incredible out-of-the-box driver support. Based on the rock-solid Ubuntu 24.04 LTS foundation with support until 2029.</p>
+            </div>
+
+            <div class="card">
+                <h3>Ubuntu</h3>
+                <span class="version">Latest Versions: 25.10 "Questing Quokka" / 24.04 LTS</span>
+                <p>The industry standard for software developers and enterprise workstations. Choose the stable 24.04 LTS for long-term reliability, or jump on the brand new 25.10 interim release for the absolute latest GNOME capabilities, apt 3.1 package manager, and advanced security features.</p>
+            </div>
+
+            <div class="card">
+                <h3>Fedora Workstation</h3>
+                <span class="version">Latest Version: Fedora 43 (Released Late 2025)</span>
+                <p>Sponsored by Red Hat, Fedora is the leading-edge innovator. Fedora 43 introduces RPM 6.0, GNOME 49, and operates as a fully Wayland-only environment. It perfectly balances new upstream technologies with dependable performance for power users.</p>
+            </div>
+
+            <div class="card">
+                <h3>Debian</h3>
+                <span class="version">Latest Version: Debian 13 "Trixie"</span>
+                <p>Known as the "Universal Operating System," Debian 13 is the foundation upon which countless other distros are built. Featuring non-free firmware baked right into the official installer and PipeWire as the default audio server, it offers bulletproof stability for servers and daily drivers alike.</p>
+            </div>
+
+            <div class="card">
+                <h3>Arch Linux</h3>
+                <span class="version">Version: Rolling Release (Always updated in 2026)</span>
+                <p>For those who want complete control over their system. Arch provides a minimal base that you build upon yourself. With its rolling release model and the legendary Arch User Repository (AUR), you will always have access to the absolute newest software the minute it is released.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+        <h2>Our Premium Application Plans</h2>
+        <p>Unlock advanced features, personalized Linux setup assistance, and 24/7 priority support.</p>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Pro Plan</h3>
+                <div class="price">€15<span style="font-size: 1rem; color: #555;">/mo</span></div>
+                <ul>
+                    <li>Basic Application Access</li>
+                    <li>Email Tech Support</li>
+                    <li>Distro Installation Guides</li>
+                    <li>Monthly Newsletter</li>
+                </ul>
+                <a href="#" class="btn">Get Pro</a>
+            </div>
+
+            <div class="pricing-card ultra">
+                <h3>Ultra Plan</h3>
+                <div class="price">€25<span style="font-size: 1rem; color: #555;">/mo</span></div>
+                <ul>
+                    <li>Full Application Access</li>
+                    <li>24/7 Priority Support</li>
+                    <li>Live 1-on-1 Remote Setup</li>
+                    <li>Custom Hardware Diagnostics</li>
+                </ul>
+                <a href="#" class="btn">Get Ultra</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 LinuxElite. Built for the open-source community.</p>
+    </footer>
+
+</body>
+</html>
