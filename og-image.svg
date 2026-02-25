@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="LinuxManual Pro social preview image">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="70" y="70" width="1060" height="490" rx="24" fill="#030712" stroke="#1f2937"/>
+  <text x="120" y="185" font-family="Segoe UI, Arial, sans-serif" font-size="58" fill="#00ffc6" font-weight="700">LinuxManual Pro</text>
+  <text x="120" y="255" font-family="Segoe UI, Arial, sans-serif" font-size="34" fill="#f1f5f9">400+ Linux Commands · Distro Intelligence · Official Downloads</text>
+  <text x="120" y="325" font-family="Consolas, Menlo, monospace" font-size="28" fill="#94a3b8">$ grep -R "production-ready" linuxmanual</text>
+  <text x="120" y="370" font-family="Consolas, Menlo, monospace" font-size="28" fill="#94a3b8">$ systemctl status linuxmanual-site</text>
+  <text x="120" y="475" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#cbd5e1">Practical Linux knowledge for sysadmins and DevOps teams</text>
+</svg>

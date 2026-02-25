@@ -18,8 +18,9 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LinuxManual Pro - 400+ Linux Commands & Distro Guide">
     <meta name="twitter:description" content="Professional Linux reference with commands, distro guidance, and official downloads.">
-    <meta property="og:image" content="https://linuxmanual.github.io/og-image.png">
-    <meta name="twitter:image" content="https://linuxmanual.github.io/og-image.png">
+    <meta property="og:image" content="https://linuxmanual.github.io/og-image.svg">
+    <meta name="twitter:image" content="https://linuxmanual.github.io/og-image.svg">
+    <meta name="twitter:image:alt" content="LinuxManual Pro with 400+ Linux commands and distro guides">
     <meta name="theme-color" content="#0b1220">
     <link rel="canonical" href="https://linuxmanual.github.io/">
 
@@ -159,7 +160,7 @@
         <span class="pill" id="categoryCount">0 categories</span>
         <span class="pill">Click copy on any command</span>
     </div>
-    <div class="search-box"><input id="search" type="text" placeholder="Search by command or category..." onkeyup="filterCommands()"></div>
+    <div class="search-box"><label id="searchLabel" for="search" style="display:block;margin-bottom:8px;color:var(--muted);font-weight:600">Search commands</label><input id="search" type="text" placeholder="Search by command or category..." onkeyup="filterCommands()" aria-describedby="searchLabel"></div>
     <div id="commands"></div>
 </section>
 
