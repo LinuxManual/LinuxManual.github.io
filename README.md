@@ -1,2 +1,14 @@
 # LinuxManual.github.io
-Discover the best Linux distributions for every type of user. Compare popular distros like Ubuntu, Fedora, Arch, and Debian, along with lesser-known alternatives. Get clear guides, tips, and updates to help you choose the perfect Linux system for your needs and workflow.
+
+A modern Linux knowledge site focused on:
+
+- 250+ practical Linux commands with instant in-page search.
+- Rich distro comparison cards with official download links.
+- SEO-focused metadata (description, OpenGraph, schema markup, robots.txt, sitemap.xml).
+- Greek-first content for Linux beginners and advanced users.
+
+## Files
+
+- `index.html` – Main website page.
+- `robots.txt` – Crawling rules + sitemap reference.
+- `sitemap.xml` – Search engine sitemap.
