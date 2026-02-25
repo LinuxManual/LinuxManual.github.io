@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinuxElite X | Ultimate Linux Platform 2026</title>
+    <title>LinuxManual Pro | 250+ Linux Commands, Distro Guide & Official Downloads</title>
+    <meta name="description" content="Πλήρες Linux manual με 250+ χρήσιμα commands, συγκριτικό distro οδηγό και επίσημα links λήψης για Ubuntu, Debian, Fedora, Arch, Mint και άλλα.">
+    <meta name="keywords" content="linux commands, linux manual, ubuntu download, fedora download, debian download, arch linux, distro guide, devops, sysadmin">
+    <meta name="google-site-verification" content="lExVQOaBYv_hTejLoeaNa2nlbYpcgO9MDt-tiP-RVlw" />
+    <meta property="og:title" content="LinuxManual Pro - 250+ Linux Commands & Distro Guide">
+    <meta property="og:description" content="Το πιο πλήρες ελληνικό Linux command manual με επίσημα links λήψης distros.">
+    <meta property="og:type" content="website">
 
     <style>
         :root {
@@ -16,7 +22,7 @@
             --muted: #64748b;
             --border: #e2e8f0;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            --card-hover-shadow: 0 10px 30px rgba(124, 58, 237, 0.15);
+            --card-hover-shadow: 0 12px 34px rgba(124, 58, 237, 0.16);
         }
 
         [data-theme="dark"] {
@@ -30,7 +36,6 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
             background: var(--bg);
@@ -42,11 +47,9 @@
 
         a { text-decoration: none; color: var(--accent); }
 
-        /* Glassmorphism Header */
         header {
-            background: rgba(11, 18, 32, 0.85);
+            background: rgba(11, 18, 32, 0.88);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
@@ -57,393 +60,395 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .logo { font-size: 1.8rem; font-weight: 800; color: var(--accent); letter-spacing: -1px; }
-        
-        nav ul { display: flex; gap: 25px; list-style: none; align-items: center; }
-        nav a { color: #f1f5f9; font-weight: 500; transition: color 0.2s; }
+        .logo { font-size: 1.7rem; font-weight: 900; color: var(--accent); letter-spacing: -0.5px; }
+        nav ul { display: flex; gap: 20px; list-style: none; align-items: center; flex-wrap: wrap; }
+        nav a { color: #f1f5f9; font-weight: 600; }
         nav a:hover { color: var(--accent); }
 
         .toggle {
             background: var(--accent);
             color: #000;
-            padding: 6px 16px;
+            padding: 7px 14px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 700;
-            transition: all 0.2s;
             border: none;
         }
-        .toggle:hover { background: #00e0ae; transform: translateY(-2px); }
 
-        /* Hero with gradient text */
         .hero {
-            padding: 160px 20px;
+            padding: 140px 20px;
             text-align: center;
             background: linear-gradient(135deg, var(--primary) 20%, var(--accent2) 100%);
             color: white;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
         }
-
-        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; }
-        .hero p { max-width: 800px; margin: auto; margin-bottom: 40px; font-size: 1.2rem; opacity: 0.9; }
+        .hero h1 { font-size: 3rem; margin-bottom: 18px; font-weight: 900; }
+        .hero p { max-width: 900px; margin: auto; margin-bottom: 35px; font-size: 1.15rem; opacity: 0.95; }
 
         .btn {
             background: var(--accent);
-            padding: 14px 32px;
+            padding: 12px 24px;
             border-radius: 8px;
             color: #000;
             font-weight: bold;
             display: inline-block;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 255, 198, 0.3);
+            margin: 4px;
         }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 255, 198, 0.5); }
 
-        .section { padding: 80px 5%; }
-        .section h2 { font-size: 2.5rem; margin-bottom: 40px; text-align: center; background: linear-gradient(90deg, var(--accent2), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section { padding: 70px 5%; }
+        .section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            background: linear-gradient(90deg, var(--accent2), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        /* Modern Grid & Cards */
+        .lead { max-width: 940px; margin: 0 auto 25px auto; color: var(--muted); text-align: center; }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
         }
 
         .card {
             background: var(--card);
-            padding: 35px;
-            border-radius: 16px;
+            padding: 26px;
+            border-radius: 14px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            transition: transform 0.25s, box-shadow 0.25s;
         }
-        .card:hover { transform: translateY(-8px); box-shadow: var(--card-hover-shadow); border-color: var(--accent); }
-        .card h3 { color: var(--text); margin-bottom: 10px; font-size: 1.4rem; }
+        .card:hover { transform: translateY(-6px); box-shadow: var(--card-hover-shadow); }
+        .card h3 { margin-bottom: 8px; }
         .card p { color: var(--muted); }
+        .card ul { padding-left: 18px; color: var(--muted); margin-top: 10px; }
+        .download-link { display: inline-block; margin-top: 12px; font-weight: 700; }
 
-        /* Table */
-        .table { width: 100%; border-collapse: collapse; margin-top: 50px; background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
-        .table th, .table td { padding: 18px; text-align: left; border-bottom: 1px solid var(--border); }
-        .table th { background: var(--primary); color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; }
-        .table tr:last-child td { border-bottom: none; }
-        .table tr:hover td { background: rgba(0, 255, 198, 0.05); }
+        .table { width: 100%; border-collapse: collapse; margin-top: 26px; background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+        .table th, .table td { padding: 14px; text-align: left; border-bottom: 1px solid var(--border); }
+        .table th { background: var(--primary); color: var(--accent); font-size: 0.88rem; letter-spacing: 0.04em; }
 
-        /* Enhanced Search */
-        .search-box { max-width: 600px; margin: 0 auto 50px auto; position: relative; }
+        .stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .pill {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 8px 14px;
+            color: var(--muted);
+            box-shadow: var(--shadow);
+            font-weight: 600;
+        }
+
+        .search-box { max-width: 800px; margin: 0 auto 20px auto; }
         .search-box input {
             width: 100%;
-            padding: 16px 20px;
-            border-radius: 12px;
+            padding: 14px 16px;
+            border-radius: 10px;
             border: 2px solid var(--border);
             background: var(--card);
             color: var(--text);
-            font-size: 1.1rem;
+            font-size: 1rem;
             outline: none;
-            transition: border-color 0.3s;
         }
-        .search-box input:focus { border-color: var(--accent); }
 
-        .command-group { margin-bottom: 30px; }
-        .command-group h3 { margin-bottom: 15px; color: var(--accent2); border-bottom: 1px solid var(--border); padding-bottom: 5px; }
-        
+        .command-group { margin-bottom: 26px; }
+        .command-group h3 { color: var(--accent2); margin-bottom: 10px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
         code {
             display: block;
             background: #030712;
             color: #00ffc6;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 8px;
-            margin: 8px 0;
+            margin: 6px 0;
             font-family: 'Consolas', 'Monaco', monospace;
             border-left: 4px solid var(--accent2);
-            transition: all 0.2s;
+            font-size: 0.93rem;
+            overflow: auto;
         }
-        code:hover { background: #111827; border-left-color: var(--accent); }
 
-        /* Pricing Area */
-        .pricing { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
-        .plan { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 40px; text-align: center; width: 320px; transition: 0.3s; position: relative; }
-        .plan:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
-        .plan h3 { font-size: 1.8rem; margin-bottom: 10px; }
-        .plan .price { font-size: 3rem; font-weight: 800; color: var(--text); margin-bottom: 20px; }
-        .plan .price span { font-size: 1rem; color: var(--muted); font-weight: 400; }
-        .plan ul { list-style: none; margin-bottom: 30px; color: var(--muted); text-align: left; }
-        .plan ul li { padding: 10px 0; border-bottom: 1px solid var(--border); }
-        .plan ul li::before { content: "✓ "; color: var(--accent); font-weight: bold; }
-        
-        .plan.ultra { border: 2px solid var(--accent2); background: linear-gradient(180deg, var(--card) 0%, rgba(124, 58, 237, 0.05) 100%); }
-        .plan.ultra .badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent2); color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
-        
-        .plan .btn { width: 100%; }
-
-        /* Tools & Utilities */
-        .sidebar {
-            position: fixed;
-            right: 0;
-            bottom: 40px;
-            background: var(--accent);
-            color: #000;
-            padding: 10px 15px;
-            border-radius: 8px 0 0 8px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
-            transition: 0.3s;
-        }
-        .sidebar:hover { right: 5px; }
-
-        .footer { background: var(--primary); color: #94a3b8; padding: 80px 5% 40px; margin-top: 60px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; }
-        .footer h4 { color: #f1f5f9; margin-bottom: 15px; font-size: 1.2rem; }
-        .footer p { margin-bottom: 8px; transition: color 0.2s; cursor: pointer; }
-        .footer p:hover { color: var(--accent); }
+        .checklist li { margin-bottom: 10px; color: var(--muted); }
+        .footer { background: var(--primary); color: #94a3b8; padding: 48px 5%; margin-top: 50px; }
 
         @media (max-width: 768px) {
-            header { flex-direction: column; padding: 1rem; }
-            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero { clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); }
+            header { flex-direction: column; padding: 0.8rem; }
+            .hero h1 { font-size: 2.1rem; }
         }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "LinuxManual Pro",
+      "url": "https://linuxmanual.github.io/",
+      "description": "Linux command manual και distro guide με επίσημα download links"
+    }
+    </script>
 </head>
 
-<body>
-
+<body data-theme="dark">
 <header>
-    <div class="logo">LinuxElite X</div>
+    <div class="logo">LinuxManual Pro</div>
     <nav>
         <ul>
-            <li><a href="#distros">Intelligence</a></li>
-            <li><a href="#manual">Manual</a></li>
-            <li><a href="#enterprise">Enterprise</a></li>
-            <li><a href="#pricing">Access</a></li>
+            <li><a href="#distros">Distros</a></li>
+            <li><a href="#manual">Commands</a></li>
+            <li><a href="#growth">Growth</a></li>
             <li><button class="toggle" onclick="toggleTheme()">Theme</button></li>
         </ul>
     </nav>
 </header>
 
 <section class="hero">
-    <h1>LinuxElite X 2026</h1>
-    <p>The definitive Linux ecosystem platform. Master distro intelligence, deploy enterprise blueprints, and harden security with real sysadmin knowledge.</p>
-    <a href="#manual" class="btn">Enter Platform</a>
+    <h1>Το Linux site σου έγινε πραγματικό Manual</h1>
+    <p>Έφτιαξα μια πολύ πιο δυνατή έκδοση με 250+ Linux commands, αναβαθμισμένες πληροφορίες για distros, επίσημα links λήψης και SEO βελτιώσεις για να μεγαλώσει η επισκεψιμότητα.</p>
+    <a href="#manual" class="btn">Δες τα Commands</a>
+    <a href="#distros" class="btn">Επίσημες Λήψεις Distros</a>
 </section>
 
 <section id="distros" class="section">
-    <h2>Distro Intelligence Matrix</h2>
+    <h2>Linux Distros: Πλήρης Οδηγός + Official Downloads</h2>
+    <p class="lead">Συμπεριέλαβα γρήγορη σύγκριση, προτεινόμενη χρήση, package manager και απευθείας links στα επίσημα download pages.</p>
+
     <div class="grid">
         <div class="card">
-            <h3>Linux Mint 22.3</h3>
-            <p>Best transition distro. Cinnamon 6.6 stability + Ubuntu 24.04 LTS core.</p>
+            <h3>Ubuntu LTS</h3>
+            <p>Ιδανικό για desktop + server, τεράστια κοινότητα και άριστη τεκμηρίωση.</p>
+            <ul><li>Βάση: Debian</li><li>Package manager: apt</li><li>Κύκλος: LTS/Interim</li></ul>
+            <a class="download-link" href="https://ubuntu.com/download" target="_blank" rel="noopener">Official download ↗</a>
         </div>
         <div class="card">
-            <h3>Ubuntu 25.10 / LTS</h3>
-            <p>Enterprise and developer ecosystem leader with the new apt 3.1 manager.</p>
+            <h3>Debian</h3>
+            <p>Σταθερότητα και αξιοπιστία για παραγωγικά περιβάλλοντα και servers.</p>
+            <ul><li>Package manager: apt</li><li>Κύκλος: Stable releases</li><li>Κατάλληλο για: Production</li></ul>
+            <a class="download-link" href="https://www.debian.org/distrib/" target="_blank" rel="noopener">Official download ↗</a>
         </div>
         <div class="card">
-            <h3>Fedora 43</h3>
-            <p>Innovation pipeline powered by Red Hat. Pure Wayland & GNOME 49.</p>
-        </div>
-        <div class="card">
-            <h3>Debian 13 "Trixie"</h3>
-            <p>The "Universal OS". Rock-solid foundation of the Linux world.</p>
+            <h3>Fedora Workstation</h3>
+            <p>Cutting-edge τεχνολογίες, εξαιρετική επιλογή για developers.</p>
+            <ul><li>Package manager: dnf</li><li>Κύκλος: ~6 μήνες</li><li>Strong SELinux defaults</li></ul>
+            <a class="download-link" href="https://fedoraproject.org/workstation/download" target="_blank" rel="noopener">Official download ↗</a>
         </div>
         <div class="card">
             <h3>Arch Linux</h3>
-            <p>Rolling release control, minimal base, and legendary AUR power.</p>
+            <p>Μέγιστος έλεγχος, rolling release, ιδανικό για power users.</p>
+            <ul><li>Package manager: pacman</li><li>AUR ecosystem</li><li>DIY φιλοσοφία</li></ul>
+            <a class="download-link" href="https://archlinux.org/download/" target="_blank" rel="noopener">Official download ↗</a>
+        </div>
+        <div class="card">
+            <h3>Linux Mint</h3>
+            <p>Πολύ φιλικό για νέους χρήστες που έρχονται από Windows.</p>
+            <ul><li>Desktop: Cinnamon</li><li>Package manager: apt</li><li>Βάση: Ubuntu LTS</li></ul>
+            <a class="download-link" href="https://linuxmint.com/download.php" target="_blank" rel="noopener">Official download ↗</a>
+        </div>
+        <div class="card">
+            <h3>openSUSE (Leap/Tumbleweed)</h3>
+            <p>Εξαιρετικά εργαλεία διαχείρισης με YaST και επιλογή stable/rolling.</p>
+            <ul><li>Package manager: zypper</li><li>Leap: stable</li><li>Tumbleweed: rolling</li></ul>
+            <a class="download-link" href="https://get.opensuse.org/" target="_blank" rel="noopener">Official download ↗</a>
         </div>
     </div>
 
     <table class="table">
         <tr>
             <th>Distribution</th>
-            <th>Primary Use Case</th>
-            <th>Release Model</th>
-            <th>Stability Index</th>
+            <th>Best For</th>
+            <th>Package Manager</th>
+            <th>Official Link</th>
         </tr>
-        <tr>
-            <td>Ubuntu 24.04 LTS</td>
-            <td>Enterprise Servers</td>
-            <td>LTS (5+ Years)</td>
-            <td>Very High</td>
-        </tr>
-        <tr>
-            <td>Fedora Workstation</td>
-            <td>Software Developers</td>
-            <td>6 Months</td>
-            <td>High</td>
-        </tr>
-        <tr>
-            <td>Arch Linux</td>
-            <td>Advanced Users / Control</td>
-            <td>Rolling Release</td>
-            <td>Variable (User-Dependent)</td>
-        </tr>
+        <tr><td>Ubuntu</td><td>Desktop/Server γενικής χρήσης</td><td>apt</td><td><a href="https://ubuntu.com/download" target="_blank" rel="noopener">ubuntu.com/download</a></td></tr>
+        <tr><td>Debian</td><td>Production stability</td><td>apt</td><td><a href="https://www.debian.org/distrib/" target="_blank" rel="noopener">debian.org/distrib</a></td></tr>
+        <tr><td>Fedora</td><td>Developers & νέα features</td><td>dnf</td><td><a href="https://fedoraproject.org/workstation/download" target="_blank" rel="noopener">fedoraproject.org</a></td></tr>
+        <tr><td>Arch Linux</td><td>Advanced users</td><td>pacman</td><td><a href="https://archlinux.org/download/" target="_blank" rel="noopener">archlinux.org/download</a></td></tr>
+        <tr><td>Linux Mint</td><td>Beginner-friendly desktop</td><td>apt</td><td><a href="https://linuxmint.com/download.php" target="_blank" rel="noopener">linuxmint.com/download.php</a></td></tr>
+        <tr><td>openSUSE</td><td>Admin tooling & flexibility</td><td>zypper</td><td><a href="https://get.opensuse.org/" target="_blank" rel="noopener">get.opensuse.org</a></td></tr>
     </table>
 </section>
 
 <section id="manual" class="section">
-    <h2>Linux Core Command Database</h2>
+    <h2>Linux Command Database (250+)</h2>
+    <div class="stats">
+        <span class="pill" id="commandCount">0 commands</span>
+        <span class="pill" id="categoryCount">0 categories</span>
+        <span class="pill">Search-enabled live filter</span>
+    </div>
+
     <div class="search-box">
-        <input type="text" id="search" placeholder="Search commands, flags or descriptions..." onkeyup="filterCommands()">
+        <input type="text" id="search" placeholder="Αναζήτηση command, flag, λέξης-κλειδί..." onkeyup="filterCommands()">
     </div>
-    
-    <div id="commands">
-        <div class="command-group">
-            <h3>Filesystem</h3>
-            <code>ls -la</code>
-            <code>chmod 755 file</code>
-            <code>chown user:group file</code>
-        </div>
-        <div class="command-group">
-            <h3>Packages (2026 Spec)</h3>
-            <code>apt update && apt upgrade -y</code>
-            <code>dnf upgrade --refresh</code>
-            <code>pacman -Syu</code>
-        </div>
-        <div class="command-group">
-            <h3>Processes & Monitoring</h3>
-            <code>top</code>
-            <code>htop</code>
-            <code>kill -9 PID</code>
-            <code>journalctl -xeu service_name</code>
-        </div>
-        <div class="command-group">
-            <h3>Networking</h3>
-            <code>ip a</code>
-            <code>ss -tulnp</code>
-            <code>tcpdump -i eth0</code>
-        </div>
-    </div>
+    <div id="commands"></div>
 </section>
 
-<section id="enterprise" class="section">
-    <h2>Enterprise Deployment Blueprint</h2>
+<section id="growth" class="section">
+    <h2>Τι χρειάζεται για να γίνει διάσημο</h2>
+    <p class="lead">Πέρα από design, το growth θέλει τεχνική στρατηγική. Έβαλα ήδη βασικό SEO στο page. Για πραγματική απογείωση, ακολούθησε το παρακάτω execution list.</p>
     <div class="grid">
-        <div class="card">
-            <h3>NGINX Reverse Proxy</h3>
-            <code>sudo apt install nginx</code>
-            <p style="margin-top:10px; font-size:0.9rem; color:var(--muted);">Configure as a load balancer for backend microservices.</p>
-        </div>
-        <div class="card">
-            <h3>Docker Engine</h3>
-            <code>sudo apt install docker.io</code>
-            <p style="margin-top:10px; font-size:0.9rem; color:var(--muted);">Containerize isolated workloads efficiently.</p>
-        </div>
-        <div class="card">
-            <h3>Kubernetes</h3>
-            <code>kubectl get nodes</code>
-            <p style="margin-top:10px; font-size:0.9rem; color:var(--muted);">Orchestrate container deployments automatically.</p>
-        </div>
-        <div class="card">
-            <h3>Database Hardening</h3>
-            <code>mysql_secure_installation</code>
-            <p style="margin-top:10px; font-size:0.9rem; color:var(--muted);">Remove test databases and secure root access.</p>
-        </div>
+        <div class="card"><h3>SEO Foundation</h3><ul class="checklist"><li>Unique title/description.</li><li>Schema.org structured data.</li><li>Google Search Console verification.</li><li>Internal linking ανά section.</li></ul></div>
+        <div class="card"><h3>Content Engine</h3><ul class="checklist"><li>1 νέο tutorial/week.</li><li>Command cheatsheets by topic.</li><li>Distro comparison updates.</li><li>Use-case pages (DevOps, SecOps, Homelab).</li></ul></div>
+        <div class="card"><h3>Distribution</h3><ul class="checklist"><li>Share snippets σε Reddit / X / LinkedIn.</li><li>Post short tips με link πίσω στο site.</li><li>Collect emails με weekly Linux digest.</li><li>Create GitHub repo for versioned content.</li></ul></div>
     </div>
 </section>
-
-<section id="security" class="section">
-    <h2>Security Hardening Framework</h2>
-    <div style="max-width: 800px; margin: auto;">
-        <code>ufw enable && ufw default deny incoming</code>
-        <code>systemctl enable fail2ban --now</code>
-        <code>sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config</code>
-        <code>auditctl -l</code>
-    </div>
-</section>
-
-<section id="pricing" class="section">
-    <h2>Platform Access Plans</h2>
-    <div class="pricing">
-        <div class="plan">
-            <h3>Pro</h3>
-            <div class="price">€15<span>/mo</span></div>
-            <ul>
-                <li>Full Manual & Database Access</li>
-                <li>Basic Deployment Blueprints</li>
-                <li>Community Forum Support</li>
-                <li>Monthly Intelligence Report</li>
-            </ul>
-            <a href="#" class="btn">Select Pro</a>
-        </div>
-        
-        <div class="plan ultra">
-            <div class="badge">RECOMMENDED</div>
-            <h3>Ultra</h3>
-            <div class="price">€25<span>/mo</span></div>
-            <ul>
-                <li>Everything in Pro</li>
-                <li>Advanced Enterprise Blueprints</li>
-                <li>1-on-1 Sysadmin Consultation</li>
-                <li>Priority 24/7 Remote Support</li>
-            </ul>
-            <a href="#" class="btn" style="background: var(--accent2); color: #fff;">Select Ultra</a>
-        </div>
-    </div>
-</section>
-
-<div class="sidebar" onclick="scrollToTop()">↑ Top</div>
 
 <footer class="footer">
-    <div class="footer-grid">
-        <div>
-            <h4>LinuxElite X</h4>
-            <p>Advanced Sysadmin Intelligence</p>
-            <p style="margin-top: 15px; color: var(--accent);">Built for 2026</p>
-        </div>
-        <div>
-            <h4>Platform</h4>
-            <p>Distro Matrix</p>
-            <p>Command Manual</p>
-            <p>Enterprise</p>
-            <p>Pricing Plans</p>
-        </div>
-        <div>
-            <h4>Built For</h4>
-            <p>DevOps Engineers</p>
-            <p>Sysadmins</p>
-            <p>Linux Enthusiasts</p>
-        </div>
-    </div>
-    <p style="margin-top:40px; text-align:center; font-size: 0.9rem;">© 2026 LinuxElite X - All Systems Operational.</p>
+    <p style="text-align:center;">© 2026 LinuxManual Pro — Built for Linux learners, sysadmins and DevOps teams.</p>
 </footer>
 
 <script>
-    // Set default theme to dark for a better 'hacker/sysadmin' vibe, but respect the toggle
+    const COMMANDS = {
+        "Filesystem Basics": [
+            "pwd", "ls", "ls -la", "ls -lh", "cd /path", "cd ..", "cd -", "tree", "mkdir newdir", "mkdir -p a/b/c",
+            "rmdir emptydir", "touch file.txt", "cp source target", "cp -r dir1 dir2", "mv old new", "rm file", "rm -r dir",
+            "rm -rf dir", "ln -s target shortcut", "stat file", "file filename", "basename /path/file", "dirname /path/file",
+            "realpath file", "readlink -f symlink"
+        ],
+        "Find & Search": [
+            "find . -name '*.log'", "find /var -type f -size +100M", "find . -mtime -7", "locate nginx.conf", "updatedb",
+            "which python3", "whereis ssh", "type ls", "grep 'pattern' file", "grep -R 'TODO' .", "grep -n 'error' app.log",
+            "grep -i 'warning' app.log", "egrep 'foo|bar' file", "awk '{print $1}' file", "awk -F: '{print $1}' /etc/passwd",
+            "sed 's/old/new/g' file", "sed -n '1,20p' file", "cut -d: -f1 /etc/passwd", "sort file", "sort -u file",
+            "uniq", "uniq -c", "wc -l file", "xargs -0 rm < list.txt"
+        ],
+        "File Viewing & Editing": [
+            "cat file", "tac file", "less file", "more file", "head -n 20 file", "tail -n 50 file", "tail -f /var/log/syslog",
+            "nl file", "od -c file", "xxd file", "nano file", "vim file", "vi file", "diff a b", "diff -u a b", "cmp a b",
+            "patch < fix.patch", "truncate -s 0 logfile", "tee out.txt", "tee -a out.txt"
+        ],
+        "Permissions & Ownership": [
+            "chmod 644 file", "chmod 755 script.sh", "chmod -R 750 project", "chown user:group file", "chown -R user:group dir",
+            "chgrp developers file", "umask", "umask 027", "getfacl file", "setfacl -m u:alice:rwx file", "setfacl -x u:alice file",
+            "ls -l", "namei -om /path/file", "sudo -l", "sudo -u postgres psql"
+        ],
+        "Users & Groups": [
+            "id", "whoami", "who", "w", "groups", "getent passwd", "useradd newuser", "useradd -m -s /bin/bash newuser",
+            "passwd newuser", "usermod -aG sudo newuser", "userdel olduser", "userdel -r olduser", "groupadd devops",
+            "groupdel devops", "gpasswd -a user group", "chage -l user", "last", "lastlog", "su -", "visudo"
+        ],
+        "Processes & Performance": [
+            "ps aux", "ps -ef", "pgrep nginx", "pkill -f gunicorn", "top", "htop", "uptime", "free -h", "vmstat 1 5",
+            "iostat -xz 1", "mpstat -P ALL 1", "pidstat 1", "nice -n 10 command", "renice 5 -p PID", "kill PID", "kill -9 PID",
+            "killall firefox", "jobs", "bg", "fg", "nohup command &", "time command", "watch -n 2 'df -h'", "dstat", "sar -u 1 3"
+        ],
+        "Systemd & Services": [
+            "systemctl status nginx", "systemctl start nginx", "systemctl stop nginx", "systemctl restart nginx", "systemctl reload nginx",
+            "systemctl enable nginx", "systemctl disable nginx", "systemctl is-enabled nginx", "systemctl list-units --type=service",
+            "systemctl list-unit-files", "systemctl daemon-reload", "systemctl mask service", "systemctl unmask service",
+            "journalctl -xe", "journalctl -u nginx", "journalctl -u nginx -f", "journalctl --since '1 hour ago'",
+            "loginctl list-sessions", "hostnamectl", "timedatectl", "localectl", "systemd-analyze", "systemd-analyze blame", "reboot", "shutdown -h now"
+        ],
+        "Networking": [
+            "ip a", "ip r", "ip link", "ip addr add 10.0.0.10/24 dev eth0", "ip route add default via 10.0.0.1", "ss -tulnp",
+            "ss -s", "netstat -tulnp", "ping 8.8.8.8", "ping -c 4 example.com", "traceroute example.com", "tracepath example.com",
+            "mtr example.com", "dig example.com", "dig +short A example.com", "nslookup example.com", "host example.com",
+            "curl -I https://example.com", "curl -L -o file URL", "wget URL", "wget -c URL", "nc -zv host 80", "telnet host 25",
+            "tcpdump -i any port 443", "nmap -sV 192.168.1.10"
+        ],
+        "Security": [
+            "ufw status", "ufw enable", "ufw default deny incoming", "ufw allow 22/tcp", "ufw allow from 10.0.0.0/24 to any port 3306",
+            "iptables -L -n -v", "iptables-save", "fail2ban-client status", "ssh-keygen -t ed25519", "ssh-copy-id user@host",
+            "ssh -i key user@host", "chmod 600 ~/.ssh/id_ed25519", "gpg --full-generate-key", "gpg --list-keys", "sha256sum file.iso",
+            "openssl rand -hex 32", "openssl x509 -in cert.pem -text -noout", "passwd -l username", "chattr +i /etc/passwd", "auditctl -l",
+            "ausearch -m USER_LOGIN", "getenforce", "setenforce 1", "apparmor_status", "lynis audit system"
+        ],
+        "Storage & Disks": [
+            "lsblk", "blkid", "df -h", "du -sh *", "du -xh / | sort -h | tail", "fdisk -l", "parted -l", "mount /dev/sdb1 /mnt",
+            "umount /mnt", "findmnt", "mount -a", "mkfs.ext4 /dev/sdb1", "mkfs.xfs /dev/sdc1", "mkswap /dev/sdd1", "swapon /dev/sdd1",
+            "swapoff /dev/sdd1", "fsck -f /dev/sdb1", "tune2fs -l /dev/sdb1", "resize2fs /dev/sdb1", "xfs_growfs /mountpoint",
+            "lvm pvdisplay", "lvm vgdisplay", "lvm lvdisplay", "cryptsetup luksFormat /dev/sdb1", "cryptsetup open /dev/sdb1 secure_disk"
+        ],
+        "Archives & Compression": [
+            "tar -cvf archive.tar dir", "tar -xvf archive.tar", "tar -czvf archive.tar.gz dir", "tar -xzvf archive.tar.gz",
+            "tar -cjvf archive.tar.bz2 dir", "tar -xjvf archive.tar.bz2", "gzip file", "gunzip file.gz", "bzip2 file", "bunzip2 file.bz2",
+            "xz file", "unxz file.xz", "zip -r archive.zip dir", "unzip archive.zip", "7z a archive.7z dir", "7z x archive.7z",
+            "zstd file", "unzstd file.zst", "split -b 100M bigfile part_", "cat part_* > mergedfile"
+        ],
+        "Package Managers": [
+            "apt update", "apt upgrade -y", "apt full-upgrade", "apt install nginx", "apt remove nginx", "apt purge nginx",
+            "apt autoremove", "apt search docker", "apt policy package", "dpkg -i package.deb", "dpkg -l", "dpkg -S /usr/bin/ls",
+            "dnf check-update", "dnf upgrade --refresh", "dnf install httpd", "dnf remove httpd", "dnf search ansible", "dnf info package",
+            "pacman -Syu", "pacman -S package", "pacman -R package", "pacman -Ss keyword", "zypper refresh", "zypper update", "zypper install vim"
+        ],
+        "Logs & Troubleshooting": [
+            "dmesg | tail", "dmesg -T", "journalctl -p err -b", "journalctl -b -1", "tail -f /var/log/auth.log", "tail -f /var/log/messages",
+            "strace -p PID", "strace -f -o trace.log command", "lsof -i :8080", "lsof /path/file", "ss -plant", "ip neigh", "arp -a",
+            "history", "history | grep ssh", "cat /proc/cpuinfo", "cat /proc/meminfo", "uname -a", "lsb_release -a", "hostnamectl status"
+        ],
+        "Git & DevOps": [
+            "git init", "git clone REPO", "git status", "git add .", "git commit -m 'message'", "git push origin main", "git pull --rebase",
+            "git checkout -b feature", "git switch main", "git merge feature", "git rebase main", "git log --oneline --graph --decorate",
+            "git diff", "git stash", "git stash pop", "git tag -a v1.0 -m 'release'", "git fetch --all", "git reset --hard HEAD~1",
+            "docker ps", "docker images", "docker build -t app .", "docker run -d -p 8080:80 app", "docker logs -f container",
+            "docker exec -it container bash", "docker compose up -d", "kubectl get pods", "kubectl get nodes", "kubectl describe pod POD",
+            "kubectl logs POD", "kubectl apply -f deployment.yaml", "kubectl delete -f deployment.yaml"
+        ]
+    };
+
     document.body.dataset.theme = "dark";
 
     function toggleTheme() {
-        document.body.dataset.theme = 
-        document.body.dataset.theme === "dark" ? "" : "dark";
+        document.body.dataset.theme = document.body.dataset.theme === "dark" ? "" : "dark";
     }
 
-    // Improved search: Hides the <h3> header if no commands match under it
-    function filterCommands() {
-        let input = document.getElementById("search").value.toLowerCase();
-        let groups = document.querySelectorAll(".command-group");
-        
-        groups.forEach(group => {
-            let codes = group.querySelectorAll("code");
-            let hasVisible = false;
-            
-            codes.forEach(code => {
-                if(code.innerText.toLowerCase().includes(input)) {
-                    code.style.display = "block";
-                    hasVisible = true;
-                } else {
-                    code.style.display = "none";
-                }
+    function renderCommands() {
+        const container = document.getElementById("commands");
+        container.innerHTML = "";
+
+        let total = 0;
+        Object.entries(COMMANDS).forEach(([category, list]) => {
+            total += list.length;
+            const group = document.createElement("div");
+            group.className = "command-group";
+            group.dataset.category = category.toLowerCase();
+
+            const title = document.createElement("h3");
+            title.textContent = `${category} (${list.length})`;
+            group.appendChild(title);
+
+            list.forEach(cmd => {
+                const code = document.createElement("code");
+                code.textContent = cmd;
+                group.appendChild(code);
             });
-            
-            // Hide the entire group (including title) if no matches found
-            group.style.display = hasVisible ? "block" : "none";
+
+            container.appendChild(group);
+        });
+
+        document.getElementById("commandCount").textContent = `${total}+ commands`;
+        document.getElementById("categoryCount").textContent = `${Object.keys(COMMANDS).length} categories`;
+    }
+
+    function filterCommands() {
+        const input = document.getElementById("search").value.toLowerCase();
+        const groups = document.querySelectorAll(".command-group");
+
+        groups.forEach(group => {
+            const codes = group.querySelectorAll("code");
+            let hasVisible = false;
+
+            codes.forEach(code => {
+                const visible = code.innerText.toLowerCase().includes(input);
+                code.style.display = visible ? "block" : "none";
+                if (visible) hasVisible = true;
+            });
+
+            const categoryMatch = group.dataset.category.includes(input);
+            group.style.display = (hasVisible || categoryMatch) ? "block" : "none";
+
+            if (categoryMatch) {
+                codes.forEach(code => code.style.display = "block");
+            }
         });
     }
 
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    renderCommands();
 </script>
-
 </body>
 </html>

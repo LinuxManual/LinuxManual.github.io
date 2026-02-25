@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://linuxmanual.github.io/sitemap.xml
