@@ -3,7 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinuxElite X | Ultimate Linux Platform 2026</title>
+    <title>LinuxManual Pro | 400+ Linux Commands, Distros, Official Downloads</title>
+    <meta name="description" content="Professional Linux reference with 400+ commands, distro comparison, official download links, and practical guides for sysadmins and DevOps teams.">
+    <meta name="keywords" content="linux commands, linux tutorial, distro guide, ubuntu download, debian download, fedora, arch linux, devops">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta name="author" content="LinuxManual Pro">
+    <meta name="google-site-verification" content="lExVQOaBYv_hTejLoeaNa2nlbYpcgO9MDt-tiP-RVlw" />
+    <meta property="og:title" content="LinuxManual Pro - 400+ Linux Commands & Distro Guide">
+    <meta property="og:description" content="Professional Linux knowledge hub with commands, distro guidance, official download links, and launch-ready SEO foundations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://linuxmanual.github.io/">
+    <meta property="og:site_name" content="LinuxManual Pro">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LinuxManual Pro - 400+ Linux Commands & Distro Guide">
+    <meta name="twitter:description" content="Professional Linux reference with commands, distro guidance, and official downloads.">
+    <meta property="og:image" content="https://linuxmanual.github.io/og-image.png">
+    <meta name="twitter:image" content="https://linuxmanual.github.io/og-image.png">
+    <meta name="theme-color" content="#0b1220">
+    <link rel="canonical" href="https://linuxmanual.github.io/">
 
     <style>
         :root {
@@ -15,435 +33,239 @@
             --text: #0f172a;
             --muted: #64748b;
             --border: #e2e8f0;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            --card-hover-shadow: 0 10px 30px rgba(124, 58, 237, 0.15);
+            --shadow: 0 10px 30px rgba(0,0,0,.08);
         }
-
         [data-theme="dark"] {
             --bg: #030712;
             --card: #111827;
             --text: #f1f5f9;
             --muted: #94a3b8;
             --border: #1f2937;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            --card-hover-shadow: 0 10px 30px rgba(0, 255, 198, 0.2);
+            --shadow: 0 12px 34px rgba(0,0,0,.35);
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            transition: background 0.3s, color 0.3s;
-            scroll-behavior: smooth;
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+        a{text-decoration:none;color:var(--accent)}
+        header{
+            background:rgba(11,18,32,.9);backdrop-filter:blur(10px);position:sticky;top:0;z-index:99;
+            border-bottom:1px solid rgba(255,255,255,.08);padding:14px 5%;display:flex;justify-content:space-between;align-items:center;gap:18px
         }
-
-        a { text-decoration: none; color: var(--accent); }
-
-        /* Glassmorphism Header */
-        header {
-            background: rgba(11, 18, 32, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+        .logo{font-weight:900;color:var(--accent);font-size:1.4rem}
+        nav ul{list-style:none;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+        nav a{color:#e2e8f0;font-weight:600}
+        .toggle{background:var(--accent);border:0;color:#000;padding:8px 14px;border-radius:9px;font-weight:700;cursor:pointer}
+        .hero{
+            padding:120px 5% 100px;background:linear-gradient(140deg,var(--primary),var(--accent2));color:#fff;text-align:center
         }
-
-        .logo { font-size: 1.8rem; font-weight: 800; color: var(--accent); letter-spacing: -1px; }
-        
-        nav ul { display: flex; gap: 25px; list-style: none; align-items: center; }
-        nav a { color: #f1f5f9; font-weight: 500; transition: color 0.2s; }
-        nav a:hover { color: var(--accent); }
-
-        .toggle {
-            background: var(--accent);
-            color: #000;
-            padding: 6px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: all 0.2s;
-            border: none;
-        }
-        .toggle:hover { background: #00e0ae; transform: translateY(-2px); }
-
-        /* Hero with gradient text */
-        .hero {
-            padding: 160px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary) 20%, var(--accent2) 100%);
-            color: white;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-            margin-bottom: 40px;
-        }
-
-        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; }
-        .hero p { max-width: 800px; margin: auto; margin-bottom: 40px; font-size: 1.2rem; opacity: 0.9; }
-
-        .btn {
-            background: var(--accent);
-            padding: 14px 32px;
-            border-radius: 8px;
-            color: #000;
-            font-weight: bold;
-            display: inline-block;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 255, 198, 0.3);
-        }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 255, 198, 0.5); }
-
-        .section { padding: 80px 5%; }
-        .section h2 { font-size: 2.5rem; margin-bottom: 40px; text-align: center; background: linear-gradient(90deg, var(--accent2), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        /* Modern Grid & Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--card);
-            padding: 35px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-        }
-        .card:hover { transform: translateY(-8px); box-shadow: var(--card-hover-shadow); border-color: var(--accent); }
-        .card h3 { color: var(--text); margin-bottom: 10px; font-size: 1.4rem; }
-        .card p { color: var(--muted); }
-
-        /* Table */
-        .table { width: 100%; border-collapse: collapse; margin-top: 50px; background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
-        .table th, .table td { padding: 18px; text-align: left; border-bottom: 1px solid var(--border); }
-        .table th { background: var(--primary); color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; }
-        .table tr:last-child td { border-bottom: none; }
-        .table tr:hover td { background: rgba(0, 255, 198, 0.05); }
-
-        /* Enhanced Search */
-        .search-box { max-width: 600px; margin: 0 auto 50px auto; position: relative; }
-        .search-box input {
-            width: 100%;
-            padding: 16px 20px;
-            border-radius: 12px;
-            border: 2px solid var(--border);
-            background: var(--card);
-            color: var(--text);
-            font-size: 1.1rem;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        .search-box input:focus { border-color: var(--accent); }
-
-        .command-group { margin-bottom: 30px; }
-        .command-group h3 { margin-bottom: 15px; color: var(--accent2); border-bottom: 1px solid var(--border); padding-bottom: 5px; }
-        
-        code {
-            display: block;
-            background: #030712;
-            color: #00ffc6;
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin: 8px 0;
-            font-family: 'Consolas', 'Monaco', monospace;
-            border-left: 4px solid var(--accent2);
-            transition: all 0.2s;
-        }
-        code:hover { background: #111827; border-left-color: var(--accent); }
-
-        /* Pricing Area */
-        .pricing { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
-        .plan { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 40px; text-align: center; width: 320px; transition: 0.3s; position: relative; }
-        .plan:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
-        .plan h3 { font-size: 1.8rem; margin-bottom: 10px; }
-        .plan .price { font-size: 3rem; font-weight: 800; color: var(--text); margin-bottom: 20px; }
-        .plan .price span { font-size: 1rem; color: var(--muted); font-weight: 400; }
-        .plan ul { list-style: none; margin-bottom: 30px; color: var(--muted); text-align: left; }
-        .plan ul li { padding: 10px 0; border-bottom: 1px solid var(--border); }
-        .plan ul li::before { content: "✓ "; color: var(--accent); font-weight: bold; }
-        
-        .plan.ultra { border: 2px solid var(--accent2); background: linear-gradient(180deg, var(--card) 0%, rgba(124, 58, 237, 0.05) 100%); }
-        .plan.ultra .badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent2); color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
-        
-        .plan .btn { width: 100%; }
-
-        /* Tools & Utilities */
-        .sidebar {
-            position: fixed;
-            right: 0;
-            bottom: 40px;
-            background: var(--accent);
-            color: #000;
-            padding: 10px 15px;
-            border-radius: 8px 0 0 8px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
-            transition: 0.3s;
-        }
-        .sidebar:hover { right: 5px; }
-
-        .footer { background: var(--primary); color: #94a3b8; padding: 80px 5% 40px; margin-top: 60px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; }
-        .footer h4 { color: #f1f5f9; margin-bottom: 15px; font-size: 1.2rem; }
-        .footer p { margin-bottom: 8px; transition: color 0.2s; cursor: pointer; }
-        .footer p:hover { color: var(--accent); }
-
-        @media (max-width: 768px) {
-            header { flex-direction: column; padding: 1rem; }
-            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero { clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); }
-        }
+        .hero h1{font-size:2.8rem;max-width:980px;margin:0 auto 16px;font-weight:900}
+        .hero p{max-width:900px;margin:0 auto 28px;opacity:.95}
+        .btn{display:inline-block;background:var(--accent);color:#000;padding:12px 22px;border-radius:10px;font-weight:800;margin:4px}
+        .section{padding:64px 5%}
+        .section h2{font-size:2rem;margin-bottom:16px;text-align:center}
+        .lead{max-width:980px;margin:0 auto 22px;text-align:center;color:var(--muted)}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+        .card{background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);border-radius:14px;padding:22px}
+        .card h3{margin-bottom:6px}
+        .card p,.card li{color:var(--muted)}
+        .card ul{padding-left:18px;margin-top:8px}
+        .table-wrap{overflow:auto}
+        .table{width:100%;border-collapse:collapse;margin-top:16px;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+        .table th,.table td{padding:12px;border-bottom:1px solid var(--border);text-align:left}
+        .table th{background:var(--primary);color:var(--accent)}
+        .stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:10px 0 18px}
+        .pill{background:var(--card);border:1px solid var(--border);padding:7px 12px;border-radius:999px;color:var(--muted);font-weight:700}
+        .search-box{max-width:860px;margin:0 auto 16px}
+        .search-box input{width:100%;padding:13px 14px;border-radius:10px;border:2px solid var(--border);background:var(--card);color:var(--text)}
+        .command-group{margin:0 0 22px}
+        .command-group h3{margin-bottom:8px;color:var(--accent2)}
+        .command{display:flex;gap:8px;align-items:center;margin:7px 0}
+        code{display:block;flex:1;background:#020617;color:#00ffc6;border-left:4px solid var(--accent2);padding:10px 12px;border-radius:8px;font-family:Consolas,monospace;overflow:auto}
+        .copy-btn{border:1px solid var(--border);background:var(--card);color:var(--text);padding:8px 10px;border-radius:8px;cursor:pointer;font-size:.85rem}
+        .faq details{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+        .footer{background:var(--primary);color:#94a3b8;padding:40px 5%;text-align:center}
+        @media (max-width:700px){.hero h1{font-size:2rem}}
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "LinuxManual Pro",
+      "url": "https://linuxmanual.github.io/",
+      "description": "Professional Linux manual with 400+ commands, distro guidance, and official downloads"
+    }
+    </script>
 </head>
-
-<body>
-
+<body data-theme="dark">
 <header>
-    <div class="logo">LinuxElite X</div>
+    <div class="logo">LinuxManual Pro</div>
     <nav>
         <ul>
-            <li><a href="#distros">Intelligence</a></li>
-            <li><a href="#manual">Manual</a></li>
-            <li><a href="#enterprise">Enterprise</a></li>
-            <li><a href="#pricing">Access</a></li>
+            <li><a href="#distros">Distros</a></li>
+            <li><a href="#manual">Commands</a></li>
+            <li><a href="#guides">Guides</a></li>
+            <li><a href="#growth">Growth</a></li>
+            <li><a href="#launch">Launch</a></li>
+            <li><a href="#faq">FAQ</a></li>
             <li><button class="toggle" onclick="toggleTheme()">Theme</button></li>
         </ul>
     </nav>
 </header>
 
 <section class="hero">
-    <h1>LinuxElite X 2026</h1>
-    <p>The definitive Linux ecosystem platform. Master distro intelligence, deploy enterprise blueprints, and harden security with real sysadmin knowledge.</p>
-    <a href="#manual" class="btn">Enter Platform</a>
+    <h1>Professional Linux Documentation: 400+ Commands, Distro Guidance, and Official Downloads</h1>
+    <p>Built for production use: this site includes a large command database, practical distro comparisons, copy-ready command snippets, FAQ answers, and search-optimized metadata.</p>
+    <a class="btn" href="#manual">Open the Command Hub</a>
+    <a class="btn" href="#distros">View Official Downloads</a>
 </section>
 
-<section id="distros" class="section">
-    <h2>Distro Intelligence Matrix</h2>
+<section class="section" id="distros">
+    <h2>Distro Intelligence + Official Download Sources</h2>
+    <p class="lead">Use-case guidance, package managers, release models, and direct links to official download portals.</p>
     <div class="grid">
-        <div class="card">
-            <h3>Linux Mint 22.3</h3>
-            <p>Best transition distro. Cinnamon 6.6 stability + Ubuntu 24.04 LTS core.</p>
-        </div>
-        <div class="card">
-            <h3>Ubuntu 25.10 / LTS</h3>
-            <p>Enterprise and developer ecosystem leader with the new apt 3.1 manager.</p>
-        </div>
-        <div class="card">
-            <h3>Fedora 43</h3>
-            <p>Innovation pipeline powered by Red Hat. Pure Wayland & GNOME 49.</p>
-        </div>
-        <div class="card">
-            <h3>Debian 13 "Trixie"</h3>
-            <p>The "Universal OS". Rock-solid foundation of the Linux world.</p>
-        </div>
-        <div class="card">
-            <h3>Arch Linux</h3>
-            <p>Rolling release control, minimal base, and legendary AUR power.</p>
-        </div>
+        <div class="card"><h3>Ubuntu LTS</h3><p>Balanced choice for teams that need reliability and broad ecosystem support.</p><ul><li>apt</li><li>LTS support</li><li>Excellent for desktop and server</li></ul><a href="https://ubuntu.com/download" target="_blank" rel="noopener noreferrer">Official download ↗</a></div>
+        <div class="card"><h3>Debian</h3><p>Maximum stability for long-running production environments.</p><ul><li>apt</li><li>Stable branch</li><li>Classic server foundation</li></ul><a href="https://www.debian.org/distrib/" target="_blank" rel="noopener noreferrer">Official download ↗</a></div>
+        <div class="card"><h3>Fedora</h3><p>Modern upstream technologies and a strong developer-first workflow.</p><ul><li>dnf</li><li>Rapid cadence</li><li>SELinux by default</li></ul><a href="https://fedoraproject.org/workstation/download" target="_blank" rel="noopener noreferrer">Official download ↗</a></div>
+        <div class="card"><h3>Arch Linux</h3><p>For advanced users who want full control with a rolling model.</p><ul><li>pacman</li><li>AUR</li><li>DIY setup</li></ul><a href="https://archlinux.org/download/" target="_blank" rel="noopener noreferrer">Official download ↗</a></div>
+        <div class="card"><h3>Linux Mint</h3><p>User-friendly desktop experience, especially for Windows switchers.</p><ul><li>apt</li><li>Cinnamon</li><li>Ubuntu-based</li></ul><a href="https://linuxmint.com/download.php" target="_blank" rel="noopener noreferrer">Official download ↗</a></div>
+        <div class="card"><h3>openSUSE</h3><p>Powerful YaST administration tools with stable and rolling choices.</p><ul><li>zypper</li><li>Leap/Tumbleweed</li><li>Admin-friendly tooling</li></ul><a href="https://get.opensuse.org/" target="_blank" rel="noopener noreferrer">Official download ↗</a></div>
+        <div class="card"><h3>Pop!_OS</h3><p>Productivity-focused desktop with strong hardware and creator support.</p><ul><li>apt</li><li>Great laptop support</li><li>Ubuntu-based</li></ul><a href="https://pop.system76.com/" target="_blank" rel="noopener noreferrer">Official download ↗</a></div>
+        <div class="card"><h3>Rocky Linux / AlmaLinux</h3><p>RHEL-compatible platforms for enterprise and cloud workloads.</p><ul><li>dnf</li><li>Long-term stability</li><li>Server-first focus</li></ul><a href="https://rockylinux.org/download" target="_blank" rel="noopener noreferrer">Rocky download ↗</a> · <a href="https://almalinux.org/get-almalinux/" target="_blank" rel="noopener noreferrer">Alma download ↗</a></div>
     </div>
-
+    <div class="table-wrap">
     <table class="table">
-        <tr>
-            <th>Distribution</th>
-            <th>Primary Use Case</th>
-            <th>Release Model</th>
-            <th>Stability Index</th>
-        </tr>
-        <tr>
-            <td>Ubuntu 24.04 LTS</td>
-            <td>Enterprise Servers</td>
-            <td>LTS (5+ Years)</td>
-            <td>Very High</td>
-        </tr>
-        <tr>
-            <td>Fedora Workstation</td>
-            <td>Software Developers</td>
-            <td>6 Months</td>
-            <td>High</td>
-        </tr>
-        <tr>
-            <td>Arch Linux</td>
-            <td>Advanced Users / Control</td>
-            <td>Rolling Release</td>
-            <td>Variable (User-Dependent)</td>
-        </tr>
+        <tr><th>Distro</th><th>Use case</th><th>Package manager</th><th>Official link</th></tr>
+        <tr><td>Ubuntu</td><td>General desktop/server</td><td>apt</td><td><a href="https://ubuntu.com/download" target="_blank" rel="noopener noreferrer">ubuntu.com/download</a></td></tr>
+        <tr><td>Debian</td><td>Stable production</td><td>apt</td><td><a href="https://www.debian.org/distrib/" target="_blank" rel="noopener noreferrer">debian.org/distrib</a></td></tr>
+        <tr><td>Fedora</td><td>Dev workstation</td><td>dnf</td><td><a href="https://fedoraproject.org/workstation/download" target="_blank" rel="noopener noreferrer">fedoraproject.org</a></td></tr>
+        <tr><td>Arch</td><td>Power users</td><td>pacman</td><td><a href="https://archlinux.org/download/" target="_blank" rel="noopener noreferrer">archlinux.org/download</a></td></tr>
+        <tr><td>Mint</td><td>Beginners</td><td>apt</td><td><a href="https://linuxmint.com/download.php" target="_blank" rel="noopener noreferrer">linuxmint.com/download.php</a></td></tr>
+        <tr><td>openSUSE</td><td>Flexible admin workflows</td><td>zypper</td><td><a href="https://get.opensuse.org/" target="_blank" rel="noopener noreferrer">get.opensuse.org</a></td></tr>
     </table>
-</section>
-
-<section id="manual" class="section">
-    <h2>Linux Core Command Database</h2>
-    <div class="search-box">
-        <input type="text" id="search" placeholder="Search commands, flags or descriptions..." onkeyup="filterCommands()">
-    </div>
-    
-    <div id="commands">
-        <div class="command-group">
-            <h3>Filesystem</h3>
-            <code>ls -la</code>
-            <code>chmod 755 file</code>
-            <code>chown user:group file</code>
-        </div>
-        <div class="command-group">
-            <h3>Packages (2026 Spec)</h3>
-            <code>apt update && apt upgrade -y</code>
-            <code>dnf upgrade --refresh</code>
-            <code>pacman -Syu</code>
-        </div>
-        <div class="command-group">
-            <h3>Processes & Monitoring</h3>
-            <code>top</code>
-            <code>htop</code>
-            <code>kill -9 PID</code>
-            <code>journalctl -xeu service_name</code>
-        </div>
-        <div class="command-group">
-            <h3>Networking</h3>
-            <code>ip a</code>
-            <code>ss -tulnp</code>
-            <code>tcpdump -i eth0</code>
-        </div>
     </div>
 </section>
 
-<section id="enterprise" class="section">
-    <h2>Enterprise Deployment Blueprint</h2>
+<section class="section" id="manual">
+    <h2>Linux Command Hub (400+)</h2>
+    <div class="stats">
+        <span class="pill" id="commandCount">0 commands</span>
+        <span class="pill" id="categoryCount">0 categories</span>
+        <span class="pill">Click copy on any command</span>
+    </div>
+    <div class="search-box"><input id="search" type="text" placeholder="Search by command or category..." onkeyup="filterCommands()"></div>
+    <div id="commands"></div>
+</section>
+
+<section class="section" id="guides">
+    <h2>Quick Start Guides</h2>
     <div class="grid">
-        <div class="card">
-            <h3>NGINX Reverse Proxy</h3>
-            <code>sudo apt install nginx</code>
-            <p style="margin-top:10px; font-size:0.9rem; color:var(--muted);">Configure as a load balancer for backend microservices.</p>
-        </div>
-        <div class="card">
-            <h3>Docker Engine</h3>
-            <code>sudo apt install docker.io</code>
-            <p style="margin-top:10px; font-size:0.9rem; color:var(--muted);">Containerize isolated workloads efficiently.</p>
-        </div>
-        <div class="card">
-            <h3>Kubernetes</h3>
-            <code>kubectl get nodes</code>
-            <p style="margin-top:10px; font-size:0.9rem; color:var(--muted);">Orchestrate container deployments automatically.</p>
-        </div>
-        <div class="card">
-            <h3>Database Hardening</h3>
-            <code>mysql_secure_installation</code>
-            <p style="margin-top:10px; font-size:0.9rem; color:var(--muted);">Remove test databases and secure root access.</p>
-        </div>
+        <div class="card"><h3>1) New Linux installation checklist</h3><ul><li>Update packages</li><li>Enable firewall</li><li>Create a non-root user</li><li>Set up SSH keys</li></ul></div>
+        <div class="card"><h3>2) Server hardening basics</h3><ul><li>Disable password SSH auth</li><li>Install fail2ban</li><li>Regular security updates</li><li>Audit open ports</li></ul></div>
+        <div class="card"><h3>3) Performance troubleshooting</h3><ul><li>CPU: top/htop/mpstat</li><li>RAM: free/vmstat</li><li>Disk: iostat/df/du</li><li>Network: ss/tcpdump</li></ul></div>
     </div>
 </section>
 
-<section id="security" class="section">
-    <h2>Security Hardening Framework</h2>
-    <div style="max-width: 800px; margin: auto;">
-        <code>ufw enable && ufw default deny incoming</code>
-        <code>systemctl enable fail2ban --now</code>
-        <code>sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config</code>
-        <code>auditctl -l</code>
+<section class="section" id="growth">
+    <h2>Go-to-Market Plan for Growth</h2>
+    <div class="grid">
+        <div class="card"><h3>SEO</h3><ul><li>Publish two long-form tutorials per week.</li><li>Add internal links between command topics and guides.</li><li>Keep sitemap and Search Console data updated.</li></ul></div>
+        <div class="card"><h3>Social & Community</h3><ul><li>Publish one short Linux tip daily.</li><li>Share a weekly recap on Reddit and developer forums.</li><li>Build an email newsletter for repeat traffic.</li></ul></div>
+        <div class="card"><h3>Authority</h3><ul><li>Contribute guest posts to reputable tech publications.</li><li>Earn backlinks from GitHub repositories and documentation.</li><li>Maintain a public roadmap with regular release notes.</li></ul></div>
     </div>
 </section>
 
-<section id="pricing" class="section">
-    <h2>Platform Access Plans</h2>
-    <div class="pricing">
-        <div class="plan">
-            <h3>Pro</h3>
-            <div class="price">€15<span>/mo</span></div>
-            <ul>
-                <li>Full Manual & Database Access</li>
-                <li>Basic Deployment Blueprints</li>
-                <li>Community Forum Support</li>
-                <li>Monthly Intelligence Report</li>
-            </ul>
-            <a href="#" class="btn">Select Pro</a>
-        </div>
-        
-        <div class="plan ultra">
-            <div class="badge">RECOMMENDED</div>
-            <h3>Ultra</h3>
-            <div class="price">€25<span>/mo</span></div>
-            <ul>
-                <li>Everything in Pro</li>
-                <li>Advanced Enterprise Blueprints</li>
-                <li>1-on-1 Sysadmin Consultation</li>
-                <li>Priority 24/7 Remote Support</li>
-            </ul>
-            <a href="#" class="btn" style="background: var(--accent2); color: #fff;">Select Ultra</a>
-        </div>
+
+<section class="section" id="launch">
+    <h2>Launch Readiness Checklist</h2>
+    <div class="grid">
+        <div class="card"><h3>Technical Readiness</h3><ul><li>Validate HTML and links before every release.</li><li>Keep `sitemap.xml` and `robots.txt` aligned with production URLs.</li><li>Track uptime and page speed with monitoring tools.</li></ul></div>
+        <div class="card"><h3>Content Quality</h3><ul><li>Review command accuracy each month.</li><li>Add release notes for major distro updates.</li><li>Publish practical tutorials tied to command categories.</li></ul></div>
+        <div class="card"><h3>Distribution</h3><ul><li>Share every new guide on developer communities.</li><li>Build backlinks through documentation contributions.</li><li>Measure traffic growth in Search Console and analytics.</li></ul></div>
     </div>
 </section>
 
-<div class="sidebar" onclick="scrollToTop()">↑ Top</div>
+<section class="section faq" id="faq">
+    <h2>FAQ</h2>
+    <details><summary>How many commands are available?</summary><p>The site includes 400+ commands with live filtering and category grouping.</p></details>
+    <details><summary>Are distro download links official?</summary><p>Yes. Every distro card links directly to the official project download page.</p></details>
+    <details><summary>Why include robots.txt and sitemap.xml?</summary><p>They help search engines crawl the site reliably and index pages faster.</p></details>
+</section>
 
-<footer class="footer">
-    <div class="footer-grid">
-        <div>
-            <h4>LinuxElite X</h4>
-            <p>Advanced Sysadmin Intelligence</p>
-            <p style="margin-top: 15px; color: var(--accent);">Built for 2026</p>
-        </div>
-        <div>
-            <h4>Platform</h4>
-            <p>Distro Matrix</p>
-            <p>Command Manual</p>
-            <p>Enterprise</p>
-            <p>Pricing Plans</p>
-        </div>
-        <div>
-            <h4>Built For</h4>
-            <p>DevOps Engineers</p>
-            <p>Sysadmins</p>
-            <p>Linux Enthusiasts</p>
-        </div>
-    </div>
-    <p style="margin-top:40px; text-align:center; font-size: 0.9rem;">© 2026 LinuxElite X - All Systems Operational.</p>
-</footer>
+<footer class="footer">© 2026 LinuxManual Pro — Practical Linux knowledge for professionals. Last content review: February 2026.</footer>
 
 <script>
-    // Set default theme to dark for a better 'hacker/sysadmin' vibe, but respect the toggle
-    document.body.dataset.theme = "dark";
+const COMMANDS = {
+  "Filesystem Basics": ["pwd","ls","ls -la","ls -lh","cd /path","cd ..","cd -","tree","mkdir dir","mkdir -p a/b/c","rmdir empty","touch file.txt","cp src dst","cp -r dir1 dir2","mv old new","rm file","rm -r dir","rm -rf dir","ln -s target link","stat file","file file","basename /path/file","dirname /path/file","realpath file","readlink -f link","install -m 755 script.sh /usr/local/bin/script","sync","chattr +i file","lsattr file","mktemp","mkfifo /tmp/myfifo","shred -u secret.txt","rsync -av src/ dst/","rsync -avz user@host:/src ./dst","find . -type l -ls","cp --reflink=auto bigfile copyfile"],
+  "Find & Search": ["find . -name '*.log'","find /var -type f -size +100M","find . -mtime -7","locate nginx.conf","updatedb","which python3","whereis ssh","type ls","grep 'pattern' file","grep -R 'TODO' .","grep -n 'error' app.log","grep -i 'warning' log","egrep 'foo|bar' file","awk '{print $1}' file","awk -F: '{print $1}' /etc/passwd","sed 's/old/new/g' file","sed -n '1,40p' file","cut -d: -f1 /etc/passwd","sort file","sort -u file","uniq","uniq -c","wc -l file","xargs -0 rm < list.txt","ripgrep error .","comm -12 a b","paste file1 file2","tr 'a-z' 'A-Z' < file","column -t file","fzf"],
+  "File Viewing & Editing": ["cat file","tac file","less file","more file","head -n 20 file","tail -n 50 file","tail -f /var/log/syslog","nl file","od -c file","xxd file","nano file","vim file","vi file","diff a b","diff -u a b","cmp a b","patch < fix.patch","truncate -s 0 log","tee out.txt","tee -a out.txt","strings binary","dos2unix file","unix2dos file","iconv -f utf-8 -t ascii file"],
+  "Permissions & Ownership": ["chmod 644 file","chmod 755 script.sh","chmod -R 750 project","chown user:group file","chown -R user:group dir","chgrp developers file","umask","umask 027","getfacl file","setfacl -m u:alice:rwx file","setfacl -x u:alice file","ls -l","namei -om /path/file","sudo -l","sudo -u postgres psql","find . -perm -4000","chmod u+s binary","chmod g+s shared_dir","chmod +t /tmp","setfacl -m g:dev:r-x file"],
+  "Users & Groups": ["id","whoami","who","w","groups","getent passwd","useradd newuser","useradd -m -s /bin/bash newuser","passwd newuser","usermod -aG sudo newuser","userdel olduser","userdel -r olduser","groupadd devops","groupdel devops","gpasswd -a user group","chage -l user","last","lastlog","su -","visudo","passwd -e user","usermod -L user","usermod -U user","newgrp group"],
+  "Processes & Performance": ["ps aux","ps -ef","pgrep nginx","pkill -f gunicorn","top","htop","uptime","free -h","vmstat 1 5","iostat -xz 1","mpstat -P ALL 1","pidstat 1","nice -n 10 cmd","renice 5 -p PID","kill PID","kill -9 PID","killall firefox","jobs","bg","fg","nohup cmd &","time cmd","watch -n 2 'df -h'","dstat","sar -u 1 3","perf top","ionice -c2 -n7 cmd","taskset -c 0-2 cmd","pstree -p","lscpu"],
+  "Systemd & Services": ["systemctl status nginx","systemctl start nginx","systemctl stop nginx","systemctl restart nginx","systemctl reload nginx","systemctl enable nginx","systemctl disable nginx","systemctl is-enabled nginx","systemctl list-units --type=service","systemctl list-unit-files","systemctl daemon-reload","systemctl mask service","systemctl unmask service","journalctl -xe","journalctl -u nginx","journalctl -u nginx -f","journalctl --since '1 hour ago'","loginctl list-sessions","hostnamectl","timedatectl","localectl","systemd-analyze","systemd-analyze blame","reboot","shutdown -h now","systemctl cat nginx","systemctl edit nginx","resolvectl status"],
+  "Networking": ["ip a","ip r","ip link","ip addr add 10.0.0.10/24 dev eth0","ip route add default via 10.0.0.1","ss -tulnp","ss -s","netstat -tulnp","ping 8.8.8.8","ping -c 4 example.com","traceroute example.com","tracepath example.com","mtr example.com","dig example.com","dig +short A example.com","nslookup example.com","host example.com","curl -I https://example.com","curl -L -o file URL","wget URL","wget -c URL","nc -zv host 80","telnet host 25","tcpdump -i any port 443","nmap -sV 192.168.1.10","iftop","nethogs","ethtool eth0","nmcli device status","nmcli connection show"],
+  "Security": ["ufw status","ufw enable","ufw default deny incoming","ufw allow 22/tcp","ufw allow from 10.0.0.0/24 to any port 3306","iptables -L -n -v","iptables-save","fail2ban-client status","ssh-keygen -t ed25519","ssh-copy-id user@host","ssh -i key user@host","chmod 600 ~/.ssh/id_ed25519","gpg --full-generate-key","gpg --list-keys","sha256sum file.iso","openssl rand -hex 32","openssl x509 -in cert.pem -text -noout","passwd -l username","chattr +i /etc/passwd","auditctl -l","ausearch -m USER_LOGIN","getenforce","setenforce 1","apparmor_status","lynis audit system","nmap --script vuln host","rkhunter --check","clamav-freshclam","clamscan -r /home","sudo journalctl -u ssh"],
+  "Storage & Disks": ["lsblk","blkid","df -h","du -sh *","du -xh / | sort -h | tail","fdisk -l","parted -l","mount /dev/sdb1 /mnt","umount /mnt","findmnt","mount -a","mkfs.ext4 /dev/sdb1","mkfs.xfs /dev/sdc1","mkswap /dev/sdd1","swapon /dev/sdd1","swapoff /dev/sdd1","fsck -f /dev/sdb1","tune2fs -l /dev/sdb1","resize2fs /dev/sdb1","xfs_growfs /mountpoint","lvm pvdisplay","lvm vgdisplay","lvm lvdisplay","cryptsetup luksFormat /dev/sdb1","cryptsetup open /dev/sdb1 secure_disk","smartctl -a /dev/sda","badblocks -sv /dev/sdb","mdadm --detail /dev/md0"],
+  "Archives & Compression": ["tar -cvf archive.tar dir","tar -xvf archive.tar","tar -czvf archive.tar.gz dir","tar -xzvf archive.tar.gz","tar -cjvf archive.tar.bz2 dir","tar -xjvf archive.tar.bz2","gzip file","gunzip file.gz","bzip2 file","bunzip2 file.bz2","xz file","unxz file.xz","zip -r archive.zip dir","unzip archive.zip","7z a archive.7z dir","7z x archive.7z","zstd file","unzstd file.zst","split -b 100M bigfile part_","cat part_* > mergedfile"],
+  "Package Managers": ["apt update","apt upgrade -y","apt full-upgrade","apt install nginx","apt remove nginx","apt purge nginx","apt autoremove","apt search docker","apt policy package","dpkg -i package.deb","dpkg -l","dpkg -S /usr/bin/ls","dnf check-update","dnf upgrade --refresh","dnf install httpd","dnf remove httpd","dnf search ansible","dnf info package","pacman -Syu","pacman -S package","pacman -R package","pacman -Ss keyword","zypper refresh","zypper update","zypper install vim","flatpak install flathub app","flatpak update","snap install code --classic"],
+  "Logs & Troubleshooting": ["dmesg | tail","dmesg -T","journalctl -p err -b","journalctl -b -1","tail -f /var/log/auth.log","tail -f /var/log/messages","strace -p PID","strace -f -o trace.log cmd","lsof -i :8080","lsof /path/file","ss -plant","ip neigh","arp -a","history","history | grep ssh","cat /proc/cpuinfo","cat /proc/meminfo","uname -a","lsb_release -a","hostnamectl status","sosreport","coredumpctl list","coredumpctl info PID","journalctl --disk-usage"],
+  "Git & DevOps": ["git init","git clone REPO","git status","git add .","git commit -m 'message'","git push origin main","git pull --rebase","git checkout -b feature","git switch main","git merge feature","git rebase main","git log --oneline --graph --decorate","git diff","git stash","git stash pop","git tag -a v1.0 -m 'release'","git fetch --all","git reset --hard HEAD~1","git cherry-pick HASH","git revert HASH","git blame file","git bisect start","docker ps","docker images","docker build -t app .","docker run -d -p 8080:80 app","docker logs -f container","docker exec -it container bash","docker compose up -d","docker compose logs -f","docker system prune -f","docker network ls","kubectl get pods","kubectl get nodes","kubectl describe pod POD","kubectl logs POD","kubectl apply -f deployment.yaml","kubectl delete -f deployment.yaml","kubectl rollout status deployment/app","kubectl rollout restart deployment/app","kubectl get events --sort-by=.metadata.creationTimestamp","ansible-playbook site.yml","ansible all -m ping","terraform init","terraform fmt","terraform validate","terraform plan","terraform apply","terraform destroy"]
+};
 
-    function toggleTheme() {
-        document.body.dataset.theme = 
-        document.body.dataset.theme === "dark" ? "" : "dark";
-    }
+function toggleTheme(){document.body.dataset.theme=document.body.dataset.theme==='dark'?'':'dark';}
 
-    // Improved search: Hides the <h3> header if no commands match under it
-    function filterCommands() {
-        let input = document.getElementById("search").value.toLowerCase();
-        let groups = document.querySelectorAll(".command-group");
-        
-        groups.forEach(group => {
-            let codes = group.querySelectorAll("code");
-            let hasVisible = false;
-            
-            codes.forEach(code => {
-                if(code.innerText.toLowerCase().includes(input)) {
-                    code.style.display = "block";
-                    hasVisible = true;
-                } else {
-                    code.style.display = "none";
-                }
-            });
-            
-            // Hide the entire group (including title) if no matches found
-            group.style.display = hasVisible ? "block" : "none";
-        });
-    }
+function createCommandRow(cmd){
+  const row=document.createElement('div');
+  row.className='command';
+  const code=document.createElement('code');
+  code.textContent=cmd;
+  const btn=document.createElement('button');
+  btn.className='copy-btn';
+  btn.textContent='Copy';
+  btn.onclick=async()=>{
+    try{await navigator.clipboard.writeText(cmd);btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy',900);}catch(e){btn.textContent='No clipboard';setTimeout(()=>btn.textContent='Copy',1000);}
+  };
+  row.appendChild(code);
+  row.appendChild(btn);
+  return row;
+}
 
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+function renderCommands(){
+  const container=document.getElementById('commands');
+  container.innerHTML='';
+  let total=0;
+  const keys=Object.keys(COMMANDS);
+  keys.forEach(category=>{
+    const list=COMMANDS[category];
+    total+=list.length;
+    const group=document.createElement('div');
+    group.className='command-group';
+    group.dataset.category=category.toLowerCase();
+    const title=document.createElement('h3');
+    title.textContent=`${category} (${list.length})`;
+    group.appendChild(title);
+    list.forEach(cmd=>group.appendChild(createCommandRow(cmd)));
+    container.appendChild(group);
+  });
+  document.getElementById('commandCount').textContent=`${total}+ commands`;
+  document.getElementById('categoryCount').textContent=`${keys.length} categories`;
+}
+
+function filterCommands(){
+  const q=document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.command-group').forEach(group=>{
+    const categoryHit=group.dataset.category.includes(q);
+    let visible=categoryHit;
+    group.querySelectorAll('.command').forEach(row=>{
+      const text=row.querySelector('code').innerText.toLowerCase();
+      const hit=categoryHit || text.includes(q);
+      row.style.display=hit?'flex':'none';
+      if(hit) visible=true;
+    });
+    group.style.display=visible?'block':'none';
+  });
+}
+
+renderCommands();
 </script>
-
 </body>
 </html>
