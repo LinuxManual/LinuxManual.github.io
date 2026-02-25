@@ -82,6 +82,9 @@
         code{display:block;flex:1;background:#020617;color:#00ffc6;border-left:4px solid var(--accent2);padding:10px 12px;border-radius:8px;font-family:Consolas,monospace;overflow:auto}
         .copy-btn{border:1px solid var(--border);background:var(--card);color:var(--text);padding:8px 10px;border-radius:8px;cursor:pointer;font-size:.85rem}
         .faq details{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+        .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+        .skip-link:focus{left:16px;top:12px;width:auto;height:auto;padding:10px 12px;background:#fff;color:#000;border-radius:8px;z-index:1000}
+        .meta-note{margin-top:12px;color:#cbd5e1;font-size:.95rem}
         .footer{background:var(--primary);color:#94a3b8;padding:40px 5%;text-align:center}
         @media (max-width:700px){.hero h1{font-size:2rem}}
     </style>
@@ -97,9 +100,10 @@
     </script>
 </head>
 <body data-theme="dark">
+<a class="skip-link" href="#manual">Skip to command hub</a>
 <header>
     <div class="logo">LinuxManual Pro</div>
-    <nav>
+    <nav aria-label="Primary">
         <ul>
             <li><a href="#distros">Distros</a></li>
             <li><a href="#manual">Commands</a></li>
@@ -117,6 +121,7 @@
     <p>Built for production use: this site includes a large command database, practical distro comparisons, copy-ready command snippets, FAQ answers, and search-optimized metadata.</p>
     <a class="btn" href="#manual">Open the Command Hub</a>
     <a class="btn" href="#distros">View Official Downloads</a>
+    <p class="meta-note">Last reviewed: February 2026 · Built for production Linux workflows.</p>
 </section>
 
 <section class="section" id="distros">
@@ -134,13 +139,15 @@
     </div>
     <div class="table-wrap">
     <table class="table">
-        <tr><th>Distro</th><th>Use case</th><th>Package manager</th><th>Official link</th></tr>
+        <thead><tr><th scope="col">Distro</th><th scope="col">Use case</th><th scope="col">Package manager</th><th scope="col">Official link</th></tr></thead>
+        <tbody>
         <tr><td>Ubuntu</td><td>General desktop/server</td><td>apt</td><td><a href="https://ubuntu.com/download" target="_blank" rel="noopener noreferrer">ubuntu.com/download</a></td></tr>
         <tr><td>Debian</td><td>Stable production</td><td>apt</td><td><a href="https://www.debian.org/distrib/" target="_blank" rel="noopener noreferrer">debian.org/distrib</a></td></tr>
         <tr><td>Fedora</td><td>Dev workstation</td><td>dnf</td><td><a href="https://fedoraproject.org/workstation/download" target="_blank" rel="noopener noreferrer">fedoraproject.org</a></td></tr>
         <tr><td>Arch</td><td>Power users</td><td>pacman</td><td><a href="https://archlinux.org/download/" target="_blank" rel="noopener noreferrer">archlinux.org/download</a></td></tr>
         <tr><td>Mint</td><td>Beginners</td><td>apt</td><td><a href="https://linuxmint.com/download.php" target="_blank" rel="noopener noreferrer">linuxmint.com/download.php</a></td></tr>
         <tr><td>openSUSE</td><td>Flexible admin workflows</td><td>zypper</td><td><a href="https://get.opensuse.org/" target="_blank" rel="noopener noreferrer">get.opensuse.org</a></td></tr>
+        </tbody>
     </table>
     </div>
 </section>
