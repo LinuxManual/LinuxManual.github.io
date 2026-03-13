@@ -10,6 +10,12 @@
     <meta property="og:title" content="LinuxManual Pro - Professional Linux Command & Distro Guide">
     <meta property="og:description" content="A professional Linux manual with official distro links, command reference, and operational best practices.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://linuxmanual.github.io/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LinuxManual Pro - Professional Linux Command & Distro Guide">
+    <meta name="twitter:description" content="Professional Linux reference with 250+ commands, distro comparison, and official downloads.">
+    <link rel="canonical" href="https://linuxmanual.github.io/">
+    <meta name="theme-color" content="#020617">
 
     <style>
         :root {
@@ -196,6 +202,64 @@
             overflow: auto;
         }
 
+
+        .command-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            align-items: center;
+            margin: 6px 0;
+        }
+
+        .copy-btn {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 7px 10px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent);
+            color: #03120f;
+        }
+
+        #backToTop {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            border: none;
+            background: var(--accent2);
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            display: none;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            background: #052e2b;
+            color: #d1fae5;
+            border: 1px solid #0f766e;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .toast.show { opacity: 1; }
+
         .checklist li { margin-bottom: 10px; color: var(--muted); }
         .footer { background: var(--primary); color: #94a3b8; padding: 48px 5%; margin-top: 50px; }
 
@@ -211,7 +275,7 @@
       "@type": "WebSite",
       "name": "LinuxManual Pro",
       "url": "https://linuxmanual.github.io/",
-      "description": "Linux command manual και distro guide με επίσημα download links"
+      "description": "Professional Linux command manual and distro guide with official download links"
     }
     </script>
 </head>
@@ -224,7 +288,8 @@
             <li><a href="#distros">Distros</a></li>
             <li><a href="#manual">Commands</a></li>
             <li><a href="#playbook">Playbook</a></li>
-            <li><button class="toggle" onclick="toggleTheme()">Theme</button></li>
+            <li><a href="#publish">Publish</a></li>
+            <li><button class="toggle" onclick="toggleTheme()" aria-label="Toggle dark theme">Theme</button></li>
         </ul>
     </nav>
 </header>
@@ -248,37 +313,37 @@
     <div class="grid">
         <div class="card">
             <h3>Ubuntu LTS</h3>
-            <p>Ιδανικό για desktop + server, τεράστια κοινότητα και άριστη τεκμηρίωση.</p>
-            <ul><li>Βάση: Debian</li><li>Package manager: apt</li><li>Κύκλος: LTS/Interim</li></ul>
+            <p>Excellent for desktop and server workloads, with a massive community and top-tier documentation.</p>
+            <ul><li>Base: Debian</li><li>Package manager: apt</li><li>Release cycle: LTS / Interim</li></ul>
             <a class="download-link" href="https://ubuntu.com/download" target="_blank" rel="noopener">Official download ↗</a>
         </div>
         <div class="card">
             <h3>Debian</h3>
-            <p>Σταθερότητα και αξιοπιστία για παραγωγικά περιβάλλοντα και servers.</p>
-            <ul><li>Package manager: apt</li><li>Κύκλος: Stable releases</li><li>Κατάλληλο για: Production</li></ul>
+            <p>Known for stability and reliability in production environments and servers.</p>
+            <ul><li>Package manager: apt</li><li>Release cycle: Stable releases</li><li>Best suited for: Production</li></ul>
             <a class="download-link" href="https://www.debian.org/distrib/" target="_blank" rel="noopener">Official download ↗</a>
         </div>
         <div class="card">
             <h3>Fedora Workstation</h3>
-            <p>Cutting-edge τεχνολογίες, εξαιρετική επιλογή για developers.</p>
-            <ul><li>Package manager: dnf</li><li>Κύκλος: ~6 μήνες</li><li>Strong SELinux defaults</li></ul>
+            <p>Cutting-edge technologies and an excellent choice for developers.</p>
+            <ul><li>Package manager: dnf</li><li>Release cycle: ~6 months</li><li>Strong SELinux defaults</li></ul>
             <a class="download-link" href="https://fedoraproject.org/workstation/download" target="_blank" rel="noopener">Official download ↗</a>
         </div>
         <div class="card">
             <h3>Arch Linux</h3>
-            <p>Μέγιστος έλεγχος, rolling release, ιδανικό για power users.</p>
-            <ul><li>Package manager: pacman</li><li>AUR ecosystem</li><li>DIY φιλοσοφία</li></ul>
+            <p>Maximum control with a rolling release model, ideal for power users.</p>
+            <ul><li>Package manager: pacman</li><li>AUR ecosystem</li><li>DIY philosophy</li></ul>
             <a class="download-link" href="https://archlinux.org/download/" target="_blank" rel="noopener">Official download ↗</a>
         </div>
         <div class="card">
             <h3>Linux Mint</h3>
-            <p>Πολύ φιλικό για νέους χρήστες που έρχονται από Windows.</p>
-            <ul><li>Desktop: Cinnamon</li><li>Package manager: apt</li><li>Βάση: Ubuntu LTS</li></ul>
+            <p>Very beginner-friendly, especially for users transitioning from Windows.</p>
+            <ul><li>Desktop: Cinnamon</li><li>Package manager: apt</li><li>Base: Ubuntu LTS</li></ul>
             <a class="download-link" href="https://linuxmint.com/download.php" target="_blank" rel="noopener">Official download ↗</a>
         </div>
         <div class="card">
             <h3>openSUSE (Leap/Tumbleweed)</h3>
-            <p>Εξαιρετικά εργαλεία διαχείρισης με YaST και επιλογή stable/rolling.</p>
+            <p>Excellent administration tooling with YaST and a choice of stable or rolling releases.</p>
             <ul><li>Package manager: zypper</li><li>Leap: stable</li><li>Tumbleweed: rolling</li></ul>
             <a class="download-link" href="https://get.opensuse.org/" target="_blank" rel="noopener">Official download ↗</a>
         </div>
@@ -291,9 +356,9 @@
             <th>Package Manager</th>
             <th>Official Link</th>
         </tr>
-        <tr><td>Ubuntu</td><td>Desktop/Server γενικής χρήσης</td><td>apt</td><td><a href="https://ubuntu.com/download" target="_blank" rel="noopener">ubuntu.com/download</a></td></tr>
+        <tr><td>Ubuntu</td><td>General-purpose desktop and server</td><td>apt</td><td><a href="https://ubuntu.com/download" target="_blank" rel="noopener">ubuntu.com/download</a></td></tr>
         <tr><td>Debian</td><td>Production stability</td><td>apt</td><td><a href="https://www.debian.org/distrib/" target="_blank" rel="noopener">debian.org/distrib</a></td></tr>
-        <tr><td>Fedora</td><td>Developers & νέα features</td><td>dnf</td><td><a href="https://fedoraproject.org/workstation/download" target="_blank" rel="noopener">fedoraproject.org</a></td></tr>
+        <tr><td>Fedora</td><td>Developers & latest features</td><td>dnf</td><td><a href="https://fedoraproject.org/workstation/download" target="_blank" rel="noopener">fedoraproject.org</a></td></tr>
         <tr><td>Arch Linux</td><td>Advanced users</td><td>pacman</td><td><a href="https://archlinux.org/download/" target="_blank" rel="noopener">archlinux.org/download</a></td></tr>
         <tr><td>Linux Mint</td><td>Beginner-friendly desktop</td><td>apt</td><td><a href="https://linuxmint.com/download.php" target="_blank" rel="noopener">linuxmint.com/download.php</a></td></tr>
         <tr><td>openSUSE</td><td>Admin tooling & flexibility</td><td>zypper</td><td><a href="https://get.opensuse.org/" target="_blank" rel="noopener">get.opensuse.org</a></td></tr>
@@ -305,13 +370,15 @@
     <div class="stats">
         <span class="pill" id="commandCount">0 commands</span>
         <span class="pill" id="categoryCount">0 categories</span>
-        <span class="pill">Search-enabled live filter</span>
+        <span class="pill">Search + copy command support</span>
     </div>
 
     <div class="search-box">
         <input type="text" id="search" placeholder="Search command, flag, tool, or keyword..." onkeyup="filterCommands()">
     </div>
+    <p class="lead" id="manualMeta">Press <strong>/</strong> to focus search. Click <strong>Copy</strong> to save commands instantly.</p>
     <div id="commands"></div>
+    <button id="backToTop" aria-label="Back to top">↑</button>
 </section>
 
 <section id="playbook" class="section">
@@ -321,6 +388,16 @@
         <div class="card"><h3>Security Baseline</h3><ul class="checklist"><li>Disable password SSH authentication.</li><li>Enforce least privilege with sudo groups.</li><li>Run regular patching and vulnerability scans.</li><li>Use host firewall defaults-deny rules.</li></ul></div>
         <div class="card"><h3>Reliability & Operations</h3><ul class="checklist"><li>Standardize backups and recovery drills.</li><li>Track services with systemd health checks.</li><li>Capture metrics, logs, and alerts centrally.</li><li>Document runbooks for common incidents.</li></ul></div>
         <div class="card"><h3>Engineering Excellence</h3><ul class="checklist"><li>Automate provisioning with IaC/Ansible.</li><li>Use Git-based review for config changes.</li><li>Apply immutable and reproducible builds.</li><li>Practice postmortems and continuous improvements.</li></ul></div>
+    </div>
+</section>
+
+<section id="publish" class="section">
+    <h2>Ready-to-Publish Checklist</h2>
+    <p class="lead">Use this checklist before going live. Every item is practical, fast, and designed to increase trust with technical audiences.</p>
+    <div class="grid">
+        <div class="card"><h3>Trust Signals</h3><ul class="checklist"><li>Use HTTPS and keep all outbound links official.</li><li>Add a visible privacy and contact page.</li><li>Display last content update date.</li><li>Keep command examples accurate and reproducible.</li></ul></div>
+        <div class="card"><h3>Performance</h3><ul class="checklist"><li>Compress assets and avoid render-blocking scripts.</li><li>Use semantic headings for SEO and accessibility.</li><li>Test mobile layout and touch targets.</li><li>Validate page speed in Lighthouse.</li></ul></div>
+        <div class="card"><h3>Growth Stack</h3><ul class="checklist"><li>Add Firebase Analytics or Plausible for traffic insights.</li><li>Create a changelog and weekly updates cadence.</li><li>Ship distro deep-dives and practical tutorials.</li><li>Collect newsletter signups with valuable Linux tips.</li></ul></div>
     </div>
 </section>
 
@@ -417,10 +494,33 @@
         ]
     };
 
-    document.body.dataset.theme = "dark";
+    document.body.dataset.theme = localStorage.getItem("theme") || "dark";
 
     function toggleTheme() {
-        document.body.dataset.theme = document.body.dataset.theme === "dark" ? "" : "dark";
+        const next = document.body.dataset.theme === "dark" ? "" : "dark";
+        document.body.dataset.theme = next;
+        localStorage.setItem("theme", next);
+    }
+
+    function showToast(message) {
+        let toast = document.querySelector(".toast");
+        if (!toast) {
+            toast = document.createElement("div");
+            toast.className = "toast";
+            document.body.appendChild(toast);
+        }
+        toast.textContent = message;
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 1300);
+    }
+
+    async function copyCommand(cmd) {
+        try {
+            await navigator.clipboard.writeText(cmd);
+            showToast(`Copied: ${cmd}`);
+        } catch {
+            showToast("Clipboard access failed in this browser.");
+        }
     }
 
     function renderCommands() {
@@ -439,15 +539,28 @@
             group.appendChild(title);
 
             list.forEach(cmd => {
+                const row = document.createElement("div");
+                row.className = "command-row";
+
                 const code = document.createElement("code");
                 code.textContent = cmd;
-                group.appendChild(code);
+
+                const button = document.createElement("button");
+                button.className = "copy-btn";
+                button.type = "button";
+                button.textContent = "Copy";
+                button.setAttribute("aria-label", `Copy command: ${cmd}`);
+                button.addEventListener("click", () => copyCommand(cmd));
+
+                row.appendChild(code);
+                row.appendChild(button);
+                group.appendChild(row);
             });
 
             container.appendChild(group);
         });
 
-        document.getElementById("commandCount").textContent = `${total}+ commands`;
+        document.getElementById("commandCount").textContent = `${total} commands`;
         document.getElementById("categoryCount").textContent = `${Object.keys(COMMANDS).length} categories`;
     }
 
@@ -456,12 +569,13 @@
         const groups = document.querySelectorAll(".command-group");
 
         groups.forEach(group => {
-            const codes = group.querySelectorAll("code");
+            const rows = group.querySelectorAll(".command-row");
             let hasVisible = false;
 
-            codes.forEach(code => {
+            rows.forEach(row => {
+                const code = row.querySelector("code");
                 const visible = code.innerText.toLowerCase().includes(input);
-                code.style.display = visible ? "block" : "none";
+                row.style.display = visible ? "grid" : "none";
                 if (visible) hasVisible = true;
             });
 
@@ -469,10 +583,23 @@
             group.style.display = (hasVisible || categoryMatch) ? "block" : "none";
 
             if (categoryMatch) {
-                codes.forEach(code => code.style.display = "block");
+                rows.forEach(row => row.style.display = "grid");
             }
         });
     }
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "/" && document.activeElement.id !== "search") {
+            event.preventDefault();
+            document.getElementById("search").focus();
+        }
+    });
+
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+        backToTop.style.display = window.scrollY > 700 ? "block" : "none";
+    });
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
     renderCommands();
 </script>
