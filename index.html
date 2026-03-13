@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinuxManual Pro | 250+ Linux Commands, Distro Guide & Official Downloads</title>
-    <meta name="description" content="Πλήρες Linux manual με 250+ χρήσιμα commands, συγκριτικό distro οδηγό και επίσημα links λήψης για Ubuntu, Debian, Fedora, Arch, Mint και άλλα.">
+    <title>LinuxManual Pro | Professional Linux Guide, 250+ Commands & Official Distros</title>
+    <meta name="description" content="Professional Linux reference with 250+ practical commands, distro comparison, official download links, and production-ready best practices.">
     <meta name="keywords" content="linux commands, linux manual, ubuntu download, fedora download, debian download, arch linux, distro guide, devops, sysadmin">
     <meta name="google-site-verification" content="lExVQOaBYv_hTejLoeaNa2nlbYpcgO9MDt-tiP-RVlw" />
-    <meta property="og:title" content="LinuxManual Pro - 250+ Linux Commands & Distro Guide">
-    <meta property="og:description" content="Το πιο πλήρες ελληνικό Linux command manual με επίσημα links λήψης distros.">
+    <meta property="og:title" content="LinuxManual Pro - Professional Linux Command & Distro Guide">
+    <meta property="og:description" content="A professional Linux manual with official distro links, command reference, and operational best practices.">
     <meta property="og:type" content="website">
 
     <style>
         :root {
             --primary: #0b1220;
-            --accent: #00ffc6;
+            --accent: #00e5b0;
             --accent2: #7c3aed;
             --bg: #f8fafc;
             --card: #ffffff;
@@ -37,7 +37,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: Inter, 'Segoe UI', Roboto, system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -78,7 +78,10 @@
         .hero {
             padding: 140px 20px;
             text-align: center;
-            background: linear-gradient(135deg, var(--primary) 20%, var(--accent2) 100%);
+            background:
+                radial-gradient(circle at 20% 20%, rgba(0,229,176,0.22), transparent 35%),
+                radial-gradient(circle at 80% 20%, rgba(124,58,237,0.3), transparent 42%),
+                linear-gradient(135deg, #020617 20%, #1e1b4b 100%);
             color: white;
             clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
         }
@@ -93,6 +96,24 @@
             font-weight: bold;
             display: inline-block;
             margin: 4px;
+        }
+
+        .hero-points {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 26px;
+        }
+
+        .hero-points span {
+            border: 1px solid rgba(255,255,255,0.25);
+            background: rgba(15, 23, 42, 0.35);
+            color: #dbeafe;
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
         }
 
         .section { padding: 70px 5%; }
@@ -202,22 +223,27 @@
         <ul>
             <li><a href="#distros">Distros</a></li>
             <li><a href="#manual">Commands</a></li>
-            <li><a href="#growth">Growth</a></li>
+            <li><a href="#playbook">Playbook</a></li>
             <li><button class="toggle" onclick="toggleTheme()">Theme</button></li>
         </ul>
     </nav>
 </header>
 
 <section class="hero">
-    <h1>Το Linux site σου έγινε πραγματικό Manual</h1>
-    <p>Έφτιαξα μια πολύ πιο δυνατή έκδοση με 250+ Linux commands, αναβαθμισμένες πληροφορίες για distros, επίσημα links λήψης και SEO βελτιώσεις για να μεγαλώσει η επισκεψιμότητα.</p>
-    <a href="#manual" class="btn">Δες τα Commands</a>
-    <a href="#distros" class="btn">Επίσημες Λήψεις Distros</a>
+    <h1>Professional Linux knowledge, ready for real-world use</h1>
+    <p>LinuxManual Pro is built for learners, administrators, and engineers who need reliable commands, official distro references, and practical production guidance in one clean experience.</p>
+    <div class="hero-points">
+        <span>250+ curated commands</span>
+        <span>Official distro download links</span>
+        <span>Security & operations playbook</span>
+    </div>
+    <a href="#manual" class="btn">Explore Commands</a>
+    <a href="#distros" class="btn">Compare Distros</a>
 </section>
 
 <section id="distros" class="section">
-    <h2>Linux Distros: Πλήρης Οδηγός + Official Downloads</h2>
-    <p class="lead">Συμπεριέλαβα γρήγορη σύγκριση, προτεινόμενη χρήση, package manager και απευθείας links στα επίσημα download pages.</p>
+    <h2>Linux Distributions: Clear Comparison + Official Downloads</h2>
+    <p class="lead">Choose the right distribution using a practical view of release model, package manager, and best use case—then jump directly to official download pages.</p>
 
     <div class="grid">
         <div class="card">
@@ -283,23 +309,23 @@
     </div>
 
     <div class="search-box">
-        <input type="text" id="search" placeholder="Αναζήτηση command, flag, λέξης-κλειδί..." onkeyup="filterCommands()">
+        <input type="text" id="search" placeholder="Search command, flag, tool, or keyword..." onkeyup="filterCommands()">
     </div>
     <div id="commands"></div>
 </section>
 
-<section id="growth" class="section">
-    <h2>Τι χρειάζεται για να γίνει διάσημο</h2>
-    <p class="lead">Πέρα από design, το growth θέλει τεχνική στρατηγική. Έβαλα ήδη βασικό SEO στο page. Για πραγματική απογείωση, ακολούθησε το παρακάτω execution list.</p>
+<section id="playbook" class="section">
+    <h2>Linux Professional Playbook</h2>
+    <p class="lead">Use this execution checklist to run Linux systems with confidence, consistency, and production-level quality.</p>
     <div class="grid">
-        <div class="card"><h3>SEO Foundation</h3><ul class="checklist"><li>Unique title/description.</li><li>Schema.org structured data.</li><li>Google Search Console verification.</li><li>Internal linking ανά section.</li></ul></div>
-        <div class="card"><h3>Content Engine</h3><ul class="checklist"><li>1 νέο tutorial/week.</li><li>Command cheatsheets by topic.</li><li>Distro comparison updates.</li><li>Use-case pages (DevOps, SecOps, Homelab).</li></ul></div>
-        <div class="card"><h3>Distribution</h3><ul class="checklist"><li>Share snippets σε Reddit / X / LinkedIn.</li><li>Post short tips με link πίσω στο site.</li><li>Collect emails με weekly Linux digest.</li><li>Create GitHub repo for versioned content.</li></ul></div>
+        <div class="card"><h3>Security Baseline</h3><ul class="checklist"><li>Disable password SSH authentication.</li><li>Enforce least privilege with sudo groups.</li><li>Run regular patching and vulnerability scans.</li><li>Use host firewall defaults-deny rules.</li></ul></div>
+        <div class="card"><h3>Reliability & Operations</h3><ul class="checklist"><li>Standardize backups and recovery drills.</li><li>Track services with systemd health checks.</li><li>Capture metrics, logs, and alerts centrally.</li><li>Document runbooks for common incidents.</li></ul></div>
+        <div class="card"><h3>Engineering Excellence</h3><ul class="checklist"><li>Automate provisioning with IaC/Ansible.</li><li>Use Git-based review for config changes.</li><li>Apply immutable and reproducible builds.</li><li>Practice postmortems and continuous improvements.</li></ul></div>
     </div>
 </section>
 
 <footer class="footer">
-    <p style="text-align:center;">© 2026 LinuxManual Pro — Built for Linux learners, sysadmins and DevOps teams.</p>
+    <p style="text-align:center;">© 2026 LinuxManual Pro — Built for Linux learners, sysadmins, and platform engineering teams.</p>
 </footer>
 
 <script>
