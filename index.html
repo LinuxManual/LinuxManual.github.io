@@ -1,181 +1,220 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate Linux Commands Cheat Sheet & Manual | LinuxManual</title>
+    <title>LinuxManual — Enterprise Linux CLI Reference & Interactive Suite</title>
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Interactive Linux command manual and cheat sheet for sysadmins, DevOps, and developers. Fast search, clear examples, and copy-paste ready commands.">
-    <meta name="keywords" content="Linux manual, Linux commands, bash cheat sheet, terminal commands, sysadmin guide, Linux CLI, Ubuntu, Debian, CentOS">
+    <!-- SEO & Metadata -->
+    <meta name="description" content="The ultimate interactive Linux CLI manual, shell simulator, chmod calculator, and DevOps command reference.">
+    <meta name="keywords" content="Linux, CLI, Terminal, Bash, SysAdmin, DevOps, Commands Cheat Sheet, Chmod Calculator">
     <meta name="author" content="LinuxManual Community">
-    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://linuxmanual.github.io/">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f172a">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph & Social Cards -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://linuxmanual.github.io/">
-    <meta property="og:title" content="Ultimate Linux Commands Cheat Sheet & Manual">
-    <meta property="og:description" content="Master the Linux CLI with instant command search, syntax breakdowns, and practical examples.">
-    <meta property="og:image" content="https://linuxmanual.github.io/assets/og-image.png">
+    <meta property="og:title" content="LinuxManual — Enterprise Interactive CLI Platform">
+    <meta property="og:description" content="Master Linux commands with live terminal simulation, chmod tools, and fast search.">
+    <meta property="og:image" content="https://linuxmanual.github.io/og-banner.png">
 
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ultimate Linux Commands Cheat Sheet">
-    <meta name="twitter:description" content="Instant search Linux commands & bash scripts. Essential tool for developers & sysadmins.">
-    <meta name="twitter:image" content="https://linuxmanual.github.io/assets/og-image.png">
-
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "TechArticle",
-      "headline": "Linux Command Line Cheat Sheet and Manual",
-      "description": "Comprehensive interactive manual for Linux shell commands, sysadmin tools, and bash scripting.",
-      "inLanguage": "en",
-      "author": {
-        "@type": "Organization",
-        "name": "LinuxManual"
-      }
-    }
-    </script>
-
-    <!-- Tailwind CSS (Fast & Lightweight CDN) -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50: '#f0f9ff', 500: '#0ea5e9', 600: '#0284c7', 900: '#0c4a6e' },
+                        terminal: { bg: '#090d16', header: '#1e293b', text: '#38bdf8' }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { background-color: #0f172a; color: #e2e8f0; font-family: system-ui, -apple-system, sans-serif; }
-        .command-card { background-color: #1e293b; border: 1px solid #334155; }
-        .command-card:hover { border-color: #38bdf8; }
-        code { font-family: 'Fira Code', monospace; background: #020617; color: #38bdf8; }
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        code, pre, .font-mono { font-family: 'Fira Code', monospace; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between custom-scrollbar selection:bg-sky-500 selection:text-white">
 
-    <!-- Header / Hero Section -->
-    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50 py-6 px-4">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <!-- Top Navigation Header -->
+    <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-40 px-4 lg:px-8 py-3">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
             <div class="flex items-center gap-3">
                 <span class="text-3xl">🐧</span>
-                <h1 class="text-2xl font-bold tracking-tight text-white">Linux<span class="text-sky-400">Manual</span></h1>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                        Linux<span class="text-sky-400">Manual</span>
+                        <span class="text-[10px] bg-sky-950 text-sky-400 border border-sky-800 font-semibold px-2 py-0.5 rounded-full">v3.0 Enterprise</span>
+                    </h1>
+                </div>
             </div>
-            
-            <!-- Real-time Interactive Search -->
-            <div class="w-full md:w-1/2 relative">
-                <input type="text" id="searchInput" onkeyup="filterCommands()" placeholder="Search commands (e.g. grep, chmod, systemctl)..." 
-                       class="w-full bg-slate-950 text-white px-4 py-3 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500 pl-10">
-                <span class="absolute left-3 top-3.5 text-slate-500">🔍</span>
+
+            <!-- Global Search Trigger -->
+            <div class="flex-1 max-w-xl mx-4 relative hidden sm:block">
+                <button onclick="openSearchModal()" class="w-full bg-slate-950 hover:bg-slate-900 text-slate-400 border border-slate-800 rounded-lg py-2 px-4 flex items-center justify-between text-sm transition">
+                    <span class="flex items-center gap-2">🔍 Search commands, flags, tools...</span>
+                    <kbd class="bg-slate-800 text-slate-300 text-xs px-2 py-0.5 rounded border border-slate-700">⌘K / Ctrl+K</kbd>
+                </button>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleTerminalModal()" class="bg-sky-600 hover:bg-sky-500 text-white px-3.5 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2 transition shadow-lg shadow-sky-600/20">
+                    <span>💻</span>
+                    <span class="hidden md:inline">Live CLI Simulator</span>
+                </button>
+                <button onclick="toggleChmodModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-lg text-sm font-medium transition">
+                    ⚙️ Chmod Tool
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 py-10 w-full flex-grow">
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8 w-full flex-1">
         
-        <!-- Category Filters -->
-        <div class="flex flex-wrap gap-2 mb-8">
-            <button onclick="filterCategory('all')" class="cat-btn px-4 py-1.5 rounded-full text-sm bg-sky-500 text-white font-medium">All</button>
-            <button onclick="filterCategory('file')" class="cat-btn px-4 py-1.5 rounded-full text-sm bg-slate-800 hover:bg-slate-700 text-slate-300">File System</button>
-            <button onclick="filterCategory('net')" class="cat-btn px-4 py-1.5 rounded-full text-sm bg-slate-800 hover:bg-slate-700 text-slate-300">Networking</button>
-            <button onclick="filterCategory('sys')" class="cat-btn px-4 py-1.5 rounded-full text-sm bg-slate-800 hover:bg-slate-700 text-slate-300">System Info</button>
-            <button onclick="filterCategory('permission')" class="cat-btn px-4 py-1.5 rounded-full text-sm bg-slate-800 hover:bg-slate-700 text-slate-300">Permissions</button>
+        <!-- Hero & Quick Stats -->
+        <div class="mb-8 p-6 bg-gradient-to-r from-slate-900 via-slate-900 to-sky-950 rounded-2xl border border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <h2 class="text-2xl font-bold text-white mb-2">Interactive Linux Command Suite</h2>
+                <p class="text-slate-400 text-sm max-w-2xl">
+                    Search over 200+ sysadmin commands, analyze syntax, test in our live browser terminal, and generate complex flags instantly.
+                </p>
+            </div>
+            <div class="flex gap-4 border-t md:border-t-0 md:border-l border-slate-800 pt-4 md:pt-0 md:pl-6">
+                <div>
+                    <div class="text-2xl font-bold text-sky-400" id="statCommandCount">0</div>
+                    <div class="text-xs text-slate-500 uppercase tracking-wider">Commands</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-emerald-400" id="statBookmarksCount">0</div>
+                    <div class="text-xs text-slate-500 uppercase tracking-wider">Saved</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <div class="flex flex-wrap gap-2" id="categoryFilters">
+                <!-- Dynamically populated categories -->
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="toggleBookmarksFilter()" id="bookmarkFilterBtn" class="bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 px-3 py-1.5 rounded-lg text-sm flex items-center gap-1.5 transition">
+                    ⭐ Favorites Only
+                </button>
+            </div>
         </div>
 
         <!-- Command Cards Grid -->
-        <div id="commandGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            <!-- Command Item 1 -->
-            <div class="command-card p-6 rounded-xl transition duration-200" data-category="file">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-semibold text-white">grep</h3>
-                    <span class="text-xs bg-sky-950 text-sky-400 border border-sky-800 px-2.5 py-0.5 rounded">File System</span>
-                </div>
-                <p class="text-slate-400 text-sm mb-4">Search for specific text patterns inside files using regular expressions.</p>
-                <div class="relative group">
-                    <pre class="p-3 rounded-lg overflow-x-auto"><code>grep -rnw '/path/to/somewhere/' -e 'pattern'</code></pre>
-                    <button onclick="copyCode(this)" class="absolute right-2 top-2 bg-slate-800 hover:bg-slate-700 text-xs px-2 py-1 rounded text-slate-300">Copy</button>
-                </div>
-            </div>
+        <div id="commandGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards rendered via JS -->
+        </div>
 
-            <!-- Command Item 2 -->
-            <div class="command-card p-6 rounded-xl transition duration-200" data-category="net">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-semibold text-white">netstat / ss</h3>
-                    <span class="text-xs bg-emerald-950 text-emerald-400 border border-emerald-800 px-2.5 py-0.5 rounded">Networking</span>
-                </div>
-                <p class="text-slate-400 text-sm mb-4">Display active network sockets, listening ports, and routing tables.</p>
-                <div class="relative group">
-                    <pre class="p-3 rounded-lg overflow-x-auto"><code>ss -tulpn</code></pre>
-                    <button onclick="copyCode(this)" class="absolute right-2 top-2 bg-slate-800 hover:bg-slate-700 text-xs px-2 py-1 rounded text-slate-300">Copy</button>
-                </div>
-            </div>
-
-            <!-- Command Item 3 -->
-            <div class="command-card p-6 rounded-xl transition duration-200" data-category="permission">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-semibold text-white">chmod</h3>
-                    <span class="text-xs bg-amber-950 text-amber-400 border border-amber-800 px-2.5 py-0.5 rounded">Permissions</span>
-                </div>
-                <p class="text-slate-400 text-sm mb-4">Change read, write, and execute permissions of files or directories.</p>
-                <div class="relative group">
-                    <pre class="p-3 rounded-lg overflow-x-auto"><code>chmod 755 script.sh</code></pre>
-                    <button onclick="copyCode(this)" class="absolute right-2 top-2 bg-slate-800 hover:bg-slate-700 text-xs px-2 py-1 rounded text-slate-300">Copy</button>
-                </div>
-            </div>
-
-            <!-- Command Item 4 -->
-            <div class="command-card p-6 rounded-xl transition duration-200" data-category="sys">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-semibold text-white">systemctl</h3>
-                    <span class="text-xs bg-purple-950 text-purple-400 border border-purple-800 px-2.5 py-0.5 rounded">System Info</span>
-                </div>
-                <p class="text-slate-400 text-sm mb-4">Control systemd services and system state (start, stop, restart, status).</p>
-                <div class="relative group">
-                    <pre class="p-3 rounded-lg overflow-x-auto"><code>systemctl status nginx</code></pre>
-                    <button onclick="copyCode(this)" class="absolute right-2 top-2 bg-slate-800 hover:bg-slate-700 text-xs px-2 py-1 rounded text-slate-300">Copy</button>
-                </div>
-            </div>
-
+        <div id="emptyState" class="hidden text-center py-16">
+            <div class="text-4xl mb-3">🔍</div>
+            <h3 class="text-lg font-medium text-white">No commands found</h3>
+            <p class="text-slate-500 text-sm mt-1">Try adjusting your search terms or filters.</p>
         </div>
     </main>
 
+    <!-- Modal: Command Palette Search -->
+    <div id="searchModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-start justify-center pt-20 px-4">
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden">
+            <div class="p-4 border-b border-slate-800 flex items-center gap-3">
+                <span class="text-slate-400">🔍</span>
+                <input type="text" id="modalSearchInput" placeholder="Type a command or function (e.g. grep, systemctl, network)..." 
+                       class="w-full bg-transparent text-white focus:outline-none text-lg">
+                <kbd onclick="closeSearchModal()" class="cursor-pointer text-xs bg-slate-800 text-slate-400 px-2 py-1 rounded">ESC</kbd>
+            </div>
+            <div id="modalSearchResults" class="max-h-96 overflow-y-auto p-4 space-y-2 custom-scrollbar">
+                <!-- Live search results -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Live Terminal Emulator -->
+    <div id="terminalModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-terminal-bg border border-slate-800 w-full max-w-4xl h-[550px] rounded-xl shadow-2xl flex flex-col overflow-hidden">
+            <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                    <span class="text-xs text-slate-400 ml-2 font-mono">bash - linuxmanual@web-sandbox:~</span>
+                </div>
+                <button onclick="toggleTerminalModal()" class="text-slate-400 hover:text-white text-sm">✕ Close</button>
+            </div>
+            <div id="terminalOutput" class="flex-1 p-4 font-mono text-sm text-slate-200 overflow-y-auto custom-scrollbar space-y-2">
+                <div class="text-sky-400">LinuxManual Web CLI Sandbox v3.0 [Type 'help' for available virtual commands]</div>
+            </div>
+            <div class="p-3 bg-slate-900/50 border-t border-slate-800 flex items-center gap-2 font-mono text-sm">
+                <span class="text-emerald-400">user@linuxmanual:~$</span>
+                <input type="text" id="terminalInput" class="flex-1 bg-transparent text-white focus:outline-none" autofocus>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Chmod Calculator -->
+    <div id="chmodModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl p-6 shadow-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">⚙️ Interactive Chmod Calculator</h3>
+                <button onclick="toggleChmodModal()" class="text-slate-400 hover:text-white">✕</button>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-4 text-center mb-6">
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                    <div class="text-xs font-semibold text-sky-400 uppercase mb-3">Owner</div>
+                    <label class="block text-sm my-1"><input type="checkbox" class="chmod-cb" data-val="400" onchange="calcChmod()"> Read (4)</label>
+                    <label class="block text-sm my-1"><input type="checkbox" class="chmod-cb" data-val="200" onchange="calcChmod()"> Write (2)</label>
+                    <label class="block text-sm my-1"><input type="checkbox" class="chmod-cb" data-val="100" onchange="calcChmod()"> Exec (1)</label>
+                </div>
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                    <div class="text-xs font-semibold text-emerald-400 uppercase mb-3">Group</div>
+                    <label class="block text-sm my-1"><input type="checkbox" class="chmod-cb" data-val="40" onchange="calcChmod()"> Read (4)</label>
+                    <label class="block text-sm my-1"><input type="checkbox" class="chmod-cb" data-val="20" onchange="calcChmod()"> Write (2)</label>
+                    <label class="block text-sm my-1"><input type="checkbox" class="chmod-cb" data-val="10" onchange="calcChmod()"> Exec (1)</label>
+                </div>
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                    <div class="text-xs font-semibold text-amber-400 uppercase mb-3">Public</div>
+                    <label class="block text-sm my-1"><input type="checkbox" class="chmod-cb" data-val="4" onchange="calcChmod()"> Read (4)</label>
+                    <label class="block text-sm my-1"><input type="checkbox" class="chmod-cb" data-val="2" onchange="calcChmod()"> Write (2)</label>
+                    <label class="block text-sm my-1"><input type="checkbox" class="chmod-cb" data-val="1" onchange="calcChmod()"> Exec (1)</label>
+                </div>
+            </div>
+
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between font-mono">
+                <div>
+                    <span class="text-xs text-slate-500 block">Command Output</span>
+                    <span id="chmodResult" class="text-lg text-sky-400 font-bold">chmod 000 filename</span>
+                </div>
+                <button onclick="copyChmodResult()" class="bg-slate-800 hover:bg-slate-700 text-xs px-3 py-2 rounded-lg text-slate-200">Copy</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="border-t border-slate-800 py-8 text-center text-slate-500 text-sm">
-        <p>LinuxManual.github.io — Open Source Community Documentation.</p>
+    <footer class="border-t border-slate-800 bg-slate-900 py-8 px-4 text-center text-slate-500 text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>© 2026 LinuxManual. Open Source Community Documentation.</p>
+            <div class="flex gap-6 text-xs text-slate-400">
+                <a href="robots.txt" class="hover:text-white">Robots.txt</a>[cite: 1]
+                <a href="sitemap.xml" class="hover:text-white">Sitemap</a>[cite: 1]
+                <a href="https://github.com/LinuxManual/LinuxManual.github.io" target="_blank" class="hover:text-white">GitHub Repo</a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Interactive JavaScript -->
-    <script>
-        function filterCommands() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.querySelectorAll('.command-card');
-            
-            cards.forEach(card => {
-                const text = card.innerText.toLowerCase();
-                card.style.display = text.includes(input) ? "block" : "none";
-            });
-        }
-
-        function filterCategory(cat) {
-            const cards = document.querySelectorAll('.command-card');
-            cards.forEach(card => {
-                if (cat === 'all' || card.dataset.category === cat) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
-                }
-            });
-        }
-
-        function copyCode(btn) {
-            const code = btn.previousElementSibling.innerText;
-            navigator.clipboard.writeText(code);
-            btn.innerText = "Copied!";
-            btn.classList.add("bg-emerald-600", "text-white");
-            setTimeout(() => {
-                btn.innerText = "Copy";
-                btn.classList.remove("bg-emerald-600", "text-white");
-            }, 2000);
-        }
-    </script>
+    <!-- App Logic Script -->
+    <script src="app.js"></script>
 </body>
 </html>
